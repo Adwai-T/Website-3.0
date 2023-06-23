@@ -2,11 +2,58 @@
  * @author Adwait Sonawane
  */
 
-import { MenuButton, SideNav } from "./component.js";
+import { IconButton, SideNav } from "./component.js";
+
+customElements.define('menu-button', IconButton);
+customElements.define('side-nav', SideNav);
 
 const main = document.getElementById('main');
-customElements.define('menu-button', MenuButton);
-customElements.define('side-nav', SideNav);
+const menuButton = document.getElementById('menu-button');
+const sideNav = document.getElementById('side-nav');
+
+const sideNavWidth = '100';
+let isSideNavOpen = false;
+
+function onInit() {
+  if(window.innerWidth < window.innerHeight) {
+    menuButton.style.visibility = 'visible';
+    toggleSideNav(false);
+  }
+  else {
+    menuButton.style.visibility = 'hidden';
+    toggleSideNav(true);
+  }
+}
+onInit();
+
+window.onresize = () => {
+  if(window.innerWidth < window.innerHeight) {
+    menuButton.style.visibility = 'visible';
+    toggleSideNav(false);
+  }
+  else {
+    menuButton.style.visibility = 'hidden';
+    toggleSideNav(true);
+  }
+}
+
+menuButton.onclick = () => {
+  if(isSideNavOpen) toggleSideNav(false);
+  else toggleSideNav(true);
+};
+
+function toggleSideNav(open) {
+  if(open) {
+    isSideNavOpen = true;
+    menuButton.style.left = sideNavWidth - 10 + 'px';
+    sideNav.style.setProperty('width', sideNavWidth + 'px');
+  }
+  else {
+    isSideNavOpen = false;
+    menuButton.style.left = '0px';
+    sideNav.style.setProperty('width', '0px');
+  }
+}
 
 /**
  * Change theme of provided element
