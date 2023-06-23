@@ -36,8 +36,11 @@ export class SideNav extends HTMLElement {
     super();
 
     const width = this.hasAttribute('width') ? this.getAttribute('width') : '200px';
-    const shadow = this.attachShadow({ mode: "open" });
-    const nav = document.createElement("nav");
+    const shadow = this.attachShadow({ mode: 'open' });
+    const nav = document.createElement('nav');
+    const navTop = document.createElement('div');
+    const navBottom = document.createElement('div');
+    const navCenter = document.createElement('div');
 
     const linkDivs = [];
     [
@@ -88,7 +91,8 @@ export class SideNav extends HTMLElement {
         flex-direction: column;
         height: 100vh;
         background: var(--background);
-        border-right: 1px solid var(--border);
+        justify-content: center;
+        box-shadow: 2px 0px 15px var(--foreground);
       }
       a {
         display: flex;
@@ -100,12 +104,19 @@ export class SideNav extends HTMLElement {
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        color: var(--magenta);
+        color: var(--primary);
       }
       svg {
         width: 60px;
         height: 60px;
-        color: var(--blue);
+        padding: -5px;
+        color: var(--primary);
+      }
+      a:hover {
+        color: var(--secondary);
+      }
+      svg:hover {
+        color: var(--secondary);
       }
     `;
     style.innerHTML = styleString;
