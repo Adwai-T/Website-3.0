@@ -23,7 +23,8 @@ body{
   height: 100vh;
   background-color: var(--background);
 }
-h1 h2 h3 h4 h5 {
+h1, h2, h3, h4, h5 {
+  text-align: center;
   color: var(--primary);
 }
 
@@ -41,13 +42,15 @@ main{
   color: var(--foreground);
   width: 100%;
   text-align: justify;
-  padding: 30px;
+  padding: 20px;
   max-width: 1000px;
+  min-height: 100%;
 }
 
 side-nav{
   height: 100%;
   transition: width 0.3s;
+  z-index: 5;
 }
 menu-button{
   position: absolute; 

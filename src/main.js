@@ -47,11 +47,13 @@ function toggleSideNav(open) {
     isSideNavOpen = true;
     menuButton.style.left = sideNavWidth - 10 + 'px';
     sideNav.style.setProperty('width', sideNavWidth + 'px');
+    sideNav.style.visibility = 'visible';
   }
   else {
     isSideNavOpen = false;
     menuButton.style.left = '0px';
     sideNav.style.setProperty('width', '0px');
+    sideNav.style.visibility = 'hidden';
   }
 }
 
