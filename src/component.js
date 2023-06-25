@@ -12,6 +12,9 @@ export class IconButton extends HTMLElement {
     img.setAttribute("src", imgSrc);
 
     const styleString = `
+      *{
+        box-sizing: border-box;
+      }
       button{
         all: unset;
         padding: 10px;
@@ -31,33 +34,130 @@ export class IconButton extends HTMLElement {
   }
 }
 
+export class GlobalSearch extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    const container = document.createElement("div");
+    container.setAttribute("id", "search");
+    shadow.appendChild(container);
+    const searchText = document.createElement("input");
+    searchText.setAttribute("type", "text");
+    searchText.setAttribute("id", "search-text");
+    container.appendChild(searchText);
+    const searchButton = document.createElement("button");
+    searchButton.setAttribute("type", "button");
+    searchButton.setAttribute("id", "search-button");
+    searchButton.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><switch><g><circle fill="#382B73" cx="500" cy="500" r="398"/><circle fill="#473080" cx="500" cy="500" r="344.3"/><path fill="#382B73" d="M719.3 672.4c-.9-1.4-2-2.7-3.2-3.9L594.4 546.8c-.6-.6-1.2-1.2-1.9-1.7-.3-.3-.7-.5-1-.8-2.4-1.7-5-3-7.7-3.8-.7-.2-1.4-.4-2.1-.5-.1 0-.3-.1-.4-.1l-2.1-.3h-.2c-3.2-.3-6.4 0-9.4.9-1.9.6-3.8 1.4-5.6 2.4-.1 0-.1.1-.2.1l-14.3-14.3c16.9-27 24.8-58 23.8-88.8 1.3-42.2-14.1-84.8-46.3-117-61.9-61.9-162.1-61.9-224 0-32.2 32.2-47.6 74.8-46.3 117-1.3 42.2 14.1 84.8 46.3 117 56.6 56.6 145.5 61.4 207.6 14.3l12.5 12.5c0 .1-.1.1-.1.2-.4.7-.8 1.4-1.1 2.2-.7 1.5-1.2 3-1.6 4.6-1 3.9-1 8 0 11.9.4 1.6.9 3.1 1.6 4.6.3.7.7 1.5 1.1 2.2 1 1.8 2.3 3.4 3.9 5L648.5 736c1.2 1.2 2.5 2.3 3.9 3.2 2.1 1.4 4.3 2.4 6.6 3.1l1.2.3c1.6.4 3.2.6 4.8.7h1.2c3.6 0 7.2-.8 10.5-2.3.7-.3 1.5-.7 2.2-1.1 1.8-1 3.4-2.3 5-3.9l18-18 .7-.7 3.3-3.3 3-3 7.3-7.3.9-.9c.6-.6 1.1-1.3 1.6-2 1-1.3 1.8-2.8 2.5-4.3 1.5-3.3 2.3-6.9 2.3-10.5-.1-4.6-1.5-9.4-4.2-13.6zm-10.6 38.7-6.2 6.2 6.2-6.2z"/><g><path fill="#FFF" d="m446.217 486.92 40.729-40.73 195.442 195.443-40.729 40.728z"/><path fill="#E6E7E8" d="m480.3 452.8 195.4 195.5 6.6-6.7-195.4-195.4-40.7 40.7z"/><path fill="#D1D3D4" d="M653.1 670.8 457.7 475.4l-11.5 11.5 195.4 195.4 40.7-40.7z"/><path fill="#1CAEE4" d="M716.1 683.8 683.9 716c-9.8 9.8-25.6 9.8-35.4 0L526.8 594.4c-9.8-9.8-9.8-25.6 0-35.4l32.2-32.2c9.8-9.8 25.6-9.8 35.4 0L716 648.4c9.8 9.8 9.8 25.7.1 35.4z"/><path fill="#27C1E6" d="M716.1 648.5 594.4 526.8c-9.8-9.8-25.6-9.8-35.4 0L526.8 559l24.9-24.9c9.8-9.8 25.6-9.8 35.4 0l121.6 121.6c9.8 9.8 9.8 25.6 0 35.4L683.8 716l32.2-32.2c9.8-9.7 9.8-25.6.1-35.3z"/><path fill="#009ADD" d="M667.1 697.4 545.5 575.8c-9.8-9.8-9.8-25.6 0-35.4l13.6-13.6-32.2 32.2c-9.8 9.8-9.8 25.6 0 35.4L648.5 716c9.8 9.8 25.6 9.8 35.4 0l32.2-32.2-13.6 13.6c-9.8 9.7-25.6 9.7-35.4 0z"/><circle fill="#D1D3D4" cx="415" cy="425" r="158.4"/><circle fill="#FFF" cx="415" cy="415" r="158.4"/><circle fill="#D1D3D4" cx="415" cy="415" r="126.7"/><circle fill="#1CAEE4" cx="415" cy="415" r="112"/><path fill="#27C1E6" d="M388.3 441.7c-34.5-34.5-41.8-86-21.8-127.7-11.1 5.3-21.5 12.6-30.7 21.8-43.7 43.7-43.7 114.7 0 158.4s114.7 43.7 158.4 0c9.2-9.2 16.4-19.6 21.8-30.7-41.7 20-93.2 12.8-127.7-21.8z"/><path fill="#009ADD" d="M494.2 335.8c-43.7-43.7-114.7-43.7-158.4 0-1.7 1.7-3.4 3.5-5 5.3 44-38.7 111-37 153.1 5 42 42 43.7 109.1 5 153.1 1.8-1.6 3.6-3.3 5.3-5 43.7-43.7 43.7-114.6 0-158.4z"/></g></g></switch></svg>';
+    container.appendChild(searchButton);
+    const style = document.createElement("style");
+    const styleString = `
+    *{
+      box-sizing: border-box;
+    }
+    #search{
+      display: flex;
+      height: fit-content;
+      position: absolute;
+      right: 0px;
+      top: 5px;
+      z-index: 5;
+    }
+    #search-text{
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+      border: none;
+      border-bottom: 2px solid var(--primary);
+      transition: width 0.3s;
+    }
+    #search-button{
+      position: relative;
+      right: 20px;
+      border: none;
+      background-color: transparent;
+      width: fit-content;
+      height: fit-content;
+    }
+    #search-button svg {
+      width: 40px;
+      height: 40px;
+    }
+    #search-button svg:hover {
+      cursor: pointer;
+    }
+    `;
+    style.innerText = styleString;
+    container.appendChild(style);
+
+    searchButton.onclick = () => {
+      const searchTextValue = searchText.value;
+      searchText.style.width = "200px";
+
+      if (searchTextValue && searchText.value.length > 3) {
+        this.onSearch(searchText.value);
+        searchText.style.width = "40px";
+      } else {
+        console.log("Error, search string should be greater than 3 letters");
+      }
+    };
+
+    searchText.onfocus = () => {
+      searchText.style.width = "200px";
+    };
+    searchText.onblur = () => {
+      searchText.style.width = "40px";
+    };
+    searchText.onkeydown = (e) => {
+      if (
+        e.code == "Enter" &&
+        searchText.value &&
+        searchText.value.length > 3
+      ) {
+        this.onSearch(searchText.value);
+      } else if (e.code == "Enter") {
+        console.log("Error, search string should be greater than 3 letters");
+      }
+    };
+  }
+
+  onSearch(searchString) {
+    console.log("Serach function in Element - ", searchString);
+    const searchEvent = new CustomEvent("globalsearch", {
+      detail: searchString,
+      cancelable: true,
+    });
+    this.dispatchEvent(searchEvent);
+  }
+}
+
 export class SideNav extends HTMLElement {
   constructor() {
     super();
 
-    const width = this.hasAttribute('width') ? this.getAttribute('width') : '200px';
-    const shadow = this.attachShadow({ mode: 'open' });
-    const nav = document.createElement('nav');
-    const navTop = document.createElement('div');
-    navTop.setAttribute('class', 'nav-top');
-    const navBottom = document.createElement('div');
-    navBottom.setAttribute('class', 'nav-bottom');
-    const navCenter = document.createElement('div');
-    navCenter.setAttribute('class', 'nav-center');
-    nav.append(...[navTop, navCenter, navBottom]);
+    const shadow = this.attachShadow({ mode: "open" });
+    const nav = document.createElement("nav");
+    const navTop = document.createElement("div");
+    navTop.setAttribute("class", "nav-top");
+    const navBottom = document.createElement("div");
+    navBottom.setAttribute("class", "nav-bottom");
+    const navCenter = document.createElement("div");
+    navCenter.setAttribute("class", "nav-center");
+    nav.append(navTop, navCenter, navBottom);
 
-    const Aimg = document.createElement('img');
-    Aimg.setAttribute('src', '/navicon.ico');
-    const restSpan = document.createElement('h5');
-    restSpan.innerText = 'dwait';
+    const Aimg = document.createElement("img");
+    Aimg.setAttribute("src", "/navicon.ico");
+    const restSpan = document.createElement("h5");
+    restSpan.innerText = "dwait";
     navTop.append(Aimg, restSpan);
-    
-    const gitImg = document.createElement('img');
-    gitImg.setAttribute('src', '/images/git.svg');
-    const gitLink = document.createElement('a');
+
+    const gitImg = document.createElement("img");
+    gitImg.setAttribute("src", "/images/git.svg");
+    const gitLink = document.createElement("a");
     gitLink.appendChild(gitImg);
-    gitLink.setAttribute('href', 'https://github.com/Adwai-T');
-    gitLink.setAttribute('target', '_blank');
+    gitLink.setAttribute("href", "https://github.com/Adwai-T");
+    gitLink.setAttribute("target", "_blank");
     navBottom.appendChild(gitLink);
 
     const linkDivs = [];
@@ -86,14 +186,14 @@ export class SideNav extends HTMLElement {
         text: "About",
         link: "about.html",
         svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256,73.8247a182.18,182.18,0,0,0-182.18,182.18c0,100.6173,81.567,182.1708,182.18,182.1708a182.1753,182.1753,0,1,0,0-364.3506Zm43.2513,279.3168q-14.0414,5.5364-22.4037,8.4375a58.9693,58.9693,0,0,1-19.4238,2.9007q-16.9938,0-26.424-8.28a26.8329,26.8329,0,0,1-9.4266-21.0582,73.7774,73.7774,0,0,1,.7029-10.134q.7128-5.1813,2.277-11.6982l11.6937-41.3964c1.0413-3.9726,1.9242-7.7166,2.6325-11.268a48.9362,48.9362,0,0,0,1.0629-9.7029q0-7.9366-3.27-11.0655c-2.1789-2.0736-6.3369-3.1284-12.5109-3.1284a33.0053,33.0053,0,0,0-9.3033,1.4238c-3.177.9405-5.8977,1.8459-8.1828,2.6892l3.1293-12.762q11.4966-4.6791,21.99-8.0064a65.7562,65.7562,0,0,1,19.89-3.34q16.8682,0,26.0244,8.1648,9.1557,8.1608,9.1494,21.1905c0,1.8018-.2016,4.9743-.6327,9.5013a63.9185,63.9185,0,0,1-2.3427,12.48l-11.65,41.23a112.86,112.86,0,0,0-2.5578,11.3634,58.9524,58.9524,0,0,0-1.1331,9.6246q0,8.2269,3.6648,11.2059,3.6977,2.9929,12.74,2.98a36.9426,36.9426,0,0,0,9.6372-1.4949,54.9418,54.9418,0,0,0,7.7958-2.61Zm-2.0745-167.4846a27.718,27.718,0,0,1-19.6128,7.5942,28.0312,28.0312,0,0,1-19.7181-7.5942,24.67,24.67,0,0,1,0-36.7821,27.9085,27.9085,0,0,1,19.7181-7.6464,27.6127,27.6127,0,0,1,19.6128,7.6464,24.83,24.83,0,0,1,0,36.7821Z"/></svg>',
-      }
+      },
     ].forEach((link) => {
       // const div = document.createElement("div");
       const a = document.createElement("a");
       a.setAttribute("href", link.link);
       a.innerText = link.text;
       const svgContainer = document.createElement("span");
-      svgContainer.setAttribute('class', 'image-container')
+      svgContainer.setAttribute("class", "image-container");
       a.appendChild(svgContainer);
       svgContainer.innerHTML = link.svg;
       linkDivs.push(a);
@@ -101,6 +201,9 @@ export class SideNav extends HTMLElement {
 
     const style = document.createElement("style");
     const styleString = `
+      *{
+        box-sizing: border-box;
+      }
       nav {
         display:flex;
         flex-direction: column;
@@ -151,5 +254,63 @@ export class SideNav extends HTMLElement {
     nav.appendChild(style);
     navCenter.append(...linkDivs);
     shadow.appendChild(nav);
+  }
+}
+
+export class PopUp extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "Open" });
+    const container = document.createElement("div");
+    shadow.appendChild(container);
+    container.setAttribute("id", "popup");
+    const closeButton = document.createElement("button");
+    container.appendChild(closeButton);
+    closeButton.innerText = "Close";
+    const style = document.createElement("style");
+    const styleString = `
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 200px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        display: none; /* Hide the pop-up initially */
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none; /* Hide the overlay initially */
+      }
+    `;
+    style.innerText = styleString;
+    container.appendChild(style);
+
+    closeButton.onclick = () => {
+      console.log("Close Popup");
+      closePopup();
+    };
+
+    function openPopup() {
+      container.style.display = "block";
+      // document.getElementById('popup').style.display = 'block';
+      // document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      container.style.display = "none";
+      // document.getElementById('popup').style.display = 'none';
+      // document.getElementById('overlay').style.display = 'none';
+    }
   }
 }
