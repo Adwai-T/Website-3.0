@@ -51,9 +51,6 @@ sideNav.onblur = () => {
 main.onclick = () => {
   toggleSideNav(false);
 }
-main.ontouchstart = () => {
-  toggleSideNav(false);
-}
 
 searchBar.addEventListener('globalsearch', (e) => {
   console.log('Search Event Main - ', e.detail);
@@ -63,6 +60,7 @@ searchBar.addEventListener('globalsearch', (e) => {
 /** Events End */
 
 function toggleSideNav(open) {
+  if(window.innerWidth > window.innerHeight) return;// for non mobile devices
   if (open) {
     isSideNavOpen = true;
     menuButton.style.left = sideNavWidth - 10 + "px";

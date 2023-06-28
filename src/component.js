@@ -102,7 +102,9 @@ export class GlobalSearch extends HTMLElement {
         console.log("Error, search string should be greater than 3 letters");
       }
     };
-
+    searchButton.onblur = () => {
+      searchText.style.width = '40px';
+    }
     searchText.onfocus = () => {
       searchText.style.width = "200px";
     };
@@ -226,8 +228,8 @@ export class SideNav extends HTMLElement {
         color: var(--primary);
       }
       svg {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         padding: -5px;
         color: var(--primary);
       }
@@ -245,9 +247,15 @@ export class SideNav extends HTMLElement {
         padding: 10px 5px;
         margin: 0 10px;
       }
+      .nav-center{
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items:center;
+      }
       img {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
       }
     `;
     style.innerHTML = styleString;
