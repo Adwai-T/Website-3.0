@@ -5,17 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/style/typography.css" />
-    <link rel="stylesheet" href="/style/main.css" />
-    <script defer src="/src/main.js" type="module"></script>
+    <!-- <link rel="stylesheet" href="/style/main.css" /> -->
+    <!-- <script defer src="/src/main.js" type="module"></script> -->
   </head>
   <body>
     <menu-button src="/images/menu.svg" id="menu-button"></menu-button>
     <side-nav id="side-nav"></side-nav>
     <search-bar></search-bar>
+    <style>
+    </style>
+    <!--Main Content-->
     <div id="content-container">
       <main id="main">
         <h1>Notes</h1>
       </main>
     </div>
+    <!--Main Content End-->
+    <script>
+      class PopUp extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({ mode: "open" });
+          const container = document.createElement("div");
+          shadow.appendChild(container);
+          container.setAttribute("class", "popup");
+          const closeButton = document.createElement("button");
+          container.appendChild(closeButton);
+          closeButton.innerText = "Close";
+          const style = document.createElement("style");
+          const styleString = `
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 200px;
+      background-color: red;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      display: block; /* Hide the pop-up initially */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none; /* Hide the overlay initially */
+    }
+  `;
+          style.innerHTML = styleString;
+          container.appendChild(style);
+
+          closeButton.onclick = () => {
+            console.log("Close Popup");
+            closePopup();
+          };
+
+          function openPopup() {
+            container.style.display = "block";
+            // document.getElementById('popup').style.display = 'block';
+            // document.getElementById('overlay').style.display = 'block';
+          }
+
+          function closePopup() {
+            container.style.display = "none";
+            // document.getElementById('popup').style.display = 'none';
+            // document.getElementById('overlay').style.display = 'none';
+          }
+        }
+      }
+
+      customElements.define('pop-up', PopUp);
+    </script>
+    <pop-up class="pop-up"></pop-up>
+
   </body>
 </html>

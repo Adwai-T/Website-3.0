@@ -2,16 +2,18 @@
  * @author Adwait Sonawane
  */
 
-import { IconButton, GlobalSearch, SideNav } from "./component.js";
+import { IconButton, GlobalSearch, SideNav, PopUp } from "./component.js";
 
 customElements.define("menu-button", IconButton);
 customElements.define("side-nav", SideNav);
 customElements.define("search-bar", GlobalSearch);
+customElements.define('search-pop-up', PopUp);
 
 const main = document.getElementById("main");
 const menuButton = document.getElementById("menu-button");
 const sideNav = document.getElementById("side-nav");
 const searchBar = document.getElementById('search-bar');
+const searchPopUp = document.getElementById('search-pop-up');
 
 const sideNavWidth = "100";
 let isSideNavOpen = false;
@@ -28,8 +30,8 @@ function onInit() {
 onInit();
 
 /** Events Start */
-
 window.onresize = () => {
+  console.log('resized');
   if (window.innerWidth < window.innerHeight) {
     menuButton.style.visibility = "visible";
     toggleSideNav(false);
@@ -44,23 +46,19 @@ menuButton.onclick = () => {
   else toggleSideNav(true);
 };
 
-sideNav.onblur = () => {
-  toggleSideNav(false);
-}
-
 main.onclick = () => {
-  toggleSideNav(false);
+  if (window.innerWidth < window.innerHeight) toggleSideNav(false);
 }
 
 searchBar.addEventListener('globalsearch', (e) => {
-  console.log('Search Event Main - ', e.detail);
+  searchPopUp.setAttribute('searchfor', e.detail);
+  searchPopUp.setAttribute('open', true);
   e.stopPropagation();
 });
-
 /** Events End */
 
 function toggleSideNav(open) {
-  if(window.innerWidth > window.innerHeight) return;// for non mobile devices
+  if(window.innerWidth > window.innerHeight && open === false) return;// always open for non mobile devices
   if (open) {
     isSideNavOpen = true;
     menuButton.style.left = sideNavWidth - 10 + "px";

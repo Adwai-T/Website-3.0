@@ -69,6 +69,7 @@ export class GlobalSearch extends HTMLElement {
       height: 40px;
       padding: 5px;
       border: none;
+      border-radius: 5px;
       border-bottom: 2px solid var(--primary);
       transition: width 0.3s;
     }
@@ -88,7 +89,7 @@ export class GlobalSearch extends HTMLElement {
       cursor: pointer;
     }
     `;
-    style.innerText = styleString;
+    style.innerHTML = styleString;
     container.appendChild(style);
 
     searchButton.onclick = () => {
@@ -125,7 +126,6 @@ export class GlobalSearch extends HTMLElement {
   }
 
   onSearch(searchString) {
-    console.log("Serach function in Element - ", searchString);
     const searchEvent = new CustomEvent("globalsearch", {
       detail: searchString,
       cancelable: true,
@@ -266,31 +266,36 @@ export class SideNav extends HTMLElement {
 }
 
 export class PopUp extends HTMLElement {
+  static get observedAttributes() { return ['open']; }
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "Open" });
+    const shadow = this.attachShadow({ mode: "open" });
     const container = document.createElement("div");
     shadow.appendChild(container);
-    container.setAttribute("id", "popup");
+    container.setAttribute("class", "popup");
     const closeButton = document.createElement("button");
     container.appendChild(closeButton);
     closeButton.innerText = "Close";
+    closeButton.setAttribute('class', 'close-button');
+    const overlay = document.createElement('div');
+    overlay.setAttribute('class', 'overlay');
+    shadow.appendChild(overlay);
     const style = document.createElement("style");
     const styleString = `
       .popup {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        height: 200px;
-        background-color: #f1f1f1;
+        transform: translate(-50%, -50%); /* bring box to center */
+        min-width: 300px;
+        min-height: 200px;
+        background-color: var(--background);
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 20px;
         display: none; /* Hide the pop-up initially */
+        z-index: 2;
       }
-
       .overlay {
         position: fixed;
         top: 0;
@@ -300,25 +305,49 @@ export class PopUp extends HTMLElement {
         background-color: rgba(0, 0, 0, 0.5);
         display: none; /* Hide the overlay initially */
       }
+      .search-result {
+      }
+      .close-button {
+        all: unset;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--secondary);
+        color: var(--background);
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
     `;
-    style.innerText = styleString;
+    style.innerHTML = styleString;
     container.appendChild(style);
 
     closeButton.onclick = () => {
-      console.log("Close Popup");
-      closePopup();
+      this.setAttribute('open', 'false');
     };
+  }
 
-    function openPopup() {
-      container.style.display = "block";
-      // document.getElementById('popup').style.display = 'block';
-      // document.getElementById('overlay').style.display = 'block';
+  attributeChangedCallback(name, oldVal, newVal) {
+    if(name === 'open' && newVal == 'true') {
+      if(this.hasAttribute('searchfor')) {
+        this.showSearchResult(this.getAttribute('searchfor'));
+        this.shadowRoot.childNodes[0].style.display = 'block';
+        this.shadowRoot.childNodes[1].style.display = 'block';
+      }
     }
+    else {
+      this.shadowRoot.childNodes[0].style.display = 'none';
+      this.shadowRoot.childNodes[1].style.display = 'none';
+    }
+  }
 
-    function closePopup() {
-      container.style.display = "none";
-      // document.getElementById('popup').style.display = 'none';
-      // document.getElementById('overlay').style.display = 'none';
-    }
+  showSearchResult(searchfor) {
+    this.shadowRoot.querySelectorAll('.search-result').forEach(ele => {
+      ele.remove();
+    });
+    const res1 = document.createElement('div');
+    res1.setAttribute('class', 'search-result');
+    res1.innerText = searchfor;
+    this.shadowRoot.childNodes[0].appendChild(res1);
   }
 }
