@@ -4,12 +4,16 @@
   padding: 0px;
 }
 :root {
+  --white: #fff;
   --background: #ffffff;
   /* --foreground: #ffffff; */
-  --primary: #007bff;
+  --primary: #126AEC;
   --secondary: #e91e63;
+
   --foreground:#333333;
   /* --background:#333333; */
+  --error: #D70000;
+  --success: #004D40;
 }
 
 html {

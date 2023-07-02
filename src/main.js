@@ -2,12 +2,13 @@
  * @author Adwait Sonawane
  */
 
-import { IconButton, GlobalSearch, SideNav, PopUp } from "./component.js";
+import { IconButton, GlobalSearch, SideNav, SearchPopUp, ShowError } from "./component.js";
 
 customElements.define("menu-button", IconButton);
 customElements.define("side-nav", SideNav);
 customElements.define("search-bar", GlobalSearch);
-customElements.define('search-pop-up', PopUp);
+customElements.define('search-pop-up', SearchPopUp);
+customElements.define('show-error', ShowError);
 
 const main = document.getElementById("main");
 const menuButton = document.getElementById("menu-button");
@@ -31,7 +32,6 @@ onInit();
 
 /** Events Start */
 window.onresize = () => {
-  console.log('resized');
   if (window.innerWidth < window.innerHeight) {
     menuButton.style.visibility = "visible";
     toggleSideNav(false);
@@ -72,6 +72,14 @@ function toggleSideNav(open) {
   }
 }
 
+export function addError(message, timer) {
+  if(!message) return;
+  document.querySelectorAll('show-error').forEach(ele => ele.remove());
+  const showError = document.createElement('show-error');
+  showError.setAttribute('message', message);
+  main.appendChild(showError);
+}
+
 /**
  * Change theme of provided element
  * @param {HTMLElement} element Element to change theme for
@@ -79,7 +87,7 @@ function toggleSideNav(open) {
  * @param {string} background
  * @param {string} link
  */
-function changeTheme(element, text, background, link) {
+export function changeTheme(element, text, background, link) {
   element.style.setProperty("--primary", link);
   element.style.setProperty("--secondary", link);
   element.style.setProperty("--foreground", text);

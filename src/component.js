@@ -1,3 +1,9 @@
+/**
+ * @author Adwait Sonawane
+ */
+
+import { addError } from "./main.js";
+
 export class IconButton extends HTMLElement {
   constructor() {
     super();
@@ -100,7 +106,7 @@ export class GlobalSearch extends HTMLElement {
         this.onSearch(searchText.value);
         searchText.style.width = "40px";
       } else {
-        console.log("Error, search string should be greater than 3 letters");
+        addError('Enter more than 3 characters for better search. Be ry bery vbig message that should overflow form here.');
       }
     };
     searchButton.onblur = () => {
@@ -265,7 +271,10 @@ export class SideNav extends HTMLElement {
   }
 }
 
-export class PopUp extends HTMLElement {
+/**
+ * open: when set to true, opens the popup search options
+ */
+export class SearchPopUp extends HTMLElement {
   static get observedAttributes() { return ['open']; }
   constructor() {
     super();
@@ -349,5 +358,69 @@ export class PopUp extends HTMLElement {
     res1.setAttribute('class', 'search-result');
     res1.innerText = searchfor;
     this.shadowRoot.childNodes[0].appendChild(res1);
+  }
+}
+
+/**
+ * message: Error Message to be shown
+ * timer: timer in sec, after which error is removed automatically
+ */
+export class ShowError extends HTMLElement {
+  static get observedAttributes() { return ['message']; }
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    const container = document.createElement('div');
+    shadow.appendChild(container);
+    container.setAttribute('class', 'show-error');
+    const messageSpan = document.createElement('span');
+    messageSpan.setAttribute('class', 'messsage-span');
+    messageSpan.innerText = this.getAttribute('message');
+    container.appendChild(messageSpan);
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = 
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256,73.82A182.18,182.18,0,1,0,438.18,256,182.18,182.18,0,0,0,256,73.82Zm90.6147,272.7243a24.5542,24.5542,0,0,1-34.7121,0l-54.6633-54.6678-57.1419,57.1464a24.5439,24.5439,0,0,1-34.704-34.7166l57.1374-57.1284-53.2-53.2089a24.5471,24.5471,0,0,1,34.7121-34.7175l53.1963,53.2089,50.7168-50.7213a24.5471,24.5471,0,0,1,34.713,34.7166l-50.7132,50.7222,54.6588,54.65A24.56,24.56,0,0,1,346.6147,346.5445Z"/></svg>';
+    container.appendChild(closeButton);
+    const style = document.createElement('style');
+    const styleString = `
+      .show-error {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        text-wrap: wrap;
+        min-height: 40px;
+        min-width: 100px;
+        max-width: 400px;
+        background-color: var(--error);
+        color: var(--white);
+        padding: 3px 10px;
+        align-items: center;
+        border-radius: 5px;
+      }
+      button {
+        all: unset;
+        color: var(--white);
+      }
+      button svg {
+        color: var(--white);
+        width: 25px;
+        height: 25px;
+      }
+    `;
+    style.innerHTML = styleString;
+    container.appendChild(style);
+
+    closeButton.onclick = () => { this.remove(); }
+
+    setTimeout((element) => {
+      if(element) element.remove();
+    }, this.hasAttribute('timer') ? timer : 3000, this);
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    if(name === 'message') {
+      this.shadowRoot.childNodes[0].childNodes[0].innerText = this.getAttribute('message');
+    }
   }
 }
