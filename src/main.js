@@ -40,6 +40,7 @@ function testCard() {
   card.setAttribute('tags', 'salesforce, web-dev');
   card.setAttribute('desc', 'Spring Boot is an open source, microservice-based Java web framework. Spring takes an opinionated approach for developing Spring application. This allows it to reducea lot of setup and get quick running application.');
   card.setAttribute('date', '10 JAN, 2023');
+  card.setAttribute('link', '/articles.html');
   cardContainer.appendChild(card);
   const card2 = document.createElement('topic-card');
   card2.setAttribute('title', 'Test Title');

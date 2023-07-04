@@ -430,8 +430,11 @@ export class Card extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({mode: 'open'});
+    const a = document.createElement('a');
+    a.setAttribute('class', 'link');
     const card = document.createElement('div');
-    shadow.appendChild(card);
+    a.appendChild(card);
+    shadow.appendChild(a);
     card.setAttribute('class', 'card');
     const image = document.createElement('img');
     image.setAttribute('class', 'card-avatar');
@@ -490,6 +493,9 @@ export class Card extends HTMLElement {
         font-weight: 900;
         font-size: 12px;
       }
+      a {
+        text-decoration: none;
+      }
 
     `;
     style.innerHTML = styleString;
@@ -502,12 +508,14 @@ export class Card extends HTMLElement {
     const desc = this.getAttribute('desc');
     const image = this.getAttribute('image');
     const date = this.getAttribute('date');
-    const tags = this.getAttribute('tags') ? this.getAttribute('tags').split(',') : [];
+    const tags = this.getAttribute('tags') ? this.getAttribute('tags') : '';
+    const link = this.getAttribute('link') ? this.getAttribute('link') : '/404.html';
 
     shadow.querySelector('.title').innerText = title;
     shadow.querySelector('.description').innerText = desc;
     shadow.querySelector('.tags').innerText = tags;
     shadow.querySelector('.date').innerText = date;
     shadow.querySelector('.card-avatar').setAttribute('src', image);
+    shadow.querySelector('.link').setAttribute('href', link);
   }
 }
