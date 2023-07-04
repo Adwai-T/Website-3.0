@@ -424,3 +424,90 @@ export class ShowError extends HTMLElement {
     }
   }
 }
+
+export class Card extends HTMLElement {
+  constructor() {
+    super();
+
+    const shadow = this.attachShadow({mode: 'open'});
+    const card = document.createElement('div');
+    shadow.appendChild(card);
+    card.setAttribute('class', 'card');
+    const image = document.createElement('img');
+    image.setAttribute('class', 'card-avatar');
+    card.appendChild(image);
+    const textContainer = document.createElement('div');
+    textContainer.setAttribute('class', 'text-container');
+    const title = document.createElement('div');
+    title.setAttribute('class', 'title');
+    const description = document.createElement('p');
+    description.setAttribute('class', 'description');
+    const date = document.createElement('div');
+    date.setAttribute('class', 'date');
+    const tags = document.createElement('div');
+    tags.setAttribute('class', 'tags');
+    textContainer.append(title, date, description, tags);
+    card.appendChild(textContainer);
+    const style = document.createElement('style');
+    const styleString = `
+      .card {
+        display: flex;
+        background-color: var(--background);
+        color: var(--foreground);
+        width: 400px;
+        max-width: 95vw;
+        height: 200px;
+        margin: 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 15px var(--foreground);
+      }
+      img {
+        width: 50px;
+        height: auto;
+        margin: 5px;
+        align-self: flex-start;
+      }
+      .text-container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px 10px 0px;
+      }
+      .tags {
+        font-size: 12px;
+        font-weight: 900;
+        margin: auto 0px 5px 0px;
+      }
+      .title {
+        font-size: 30px;
+      }
+      .description {
+        font-size: 15px;
+        text-align: left;
+        line-height: 1.1;
+        margin: 10px 0px;
+      }
+      .date {
+        font-weight: 900;
+        font-size: 12px;
+      }
+
+    `;
+    style.innerHTML = styleString;
+    card.appendChild(style);
+  }
+
+  connectedCallback() {
+    const shadow = this.shadowRoot;
+    const title = this.getAttribute('title');
+    const desc = this.getAttribute('desc');
+    const image = this.getAttribute('image');
+    const date = this.getAttribute('date');
+    const tags = this.getAttribute('tags') ? this.getAttribute('tags').split(',') : [];
+
+    shadow.querySelector('.title').innerText = title;
+    shadow.querySelector('.description').innerText = desc;
+    shadow.querySelector('.tags').innerText = tags;
+    shadow.querySelector('.date').innerText = date;
+    shadow.querySelector('.card-avatar').setAttribute('src', image);
+  }
+}
