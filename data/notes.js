@@ -1,42 +1,71 @@
-export const notes = [
+/**
+ * link: string (absolute or /link)
+ * image: string link (absolute or /link)
+ * date : string any format
+ */
+export const NOTES  = [
   {
-    'Title': 'Angular',
-    'Desc': 'Angular is a popular framework developed by google, used to create single page applications',
-    'Tag': ['Web-Dev']
+    'title': 'Angular',
+    'desc': 'Angular is a popular framework developed by google, used to create single page applications',
+    'tags': 'Web-Dev, Framework',
+    'image': '',
+    'link': '/notes/angular.html',
+    'date': ''
   },
   {
-    'Title' : 'Spring',
-    'Desc': 'The Spring Framework (Spring) is an open-source application framework that provides infrastructure support for developing Java applications.',
-    'Tag': ['Web-Dev']
+    'title' : 'Spring',
+    'desc': 'The Spring Framework (Spring) is an open-source application framework that provides infrastructure support for developing Java applications.',
+    'tags': 'Web-Dev, Framework',
+    'image': '',
+    'link': '/notes/spring.html',
+    'date': ''
   },
   {
-    'Title': 'Spring-Boot',
-    'Desc': 'Spring Boot is an open source, microservice-based Java web framework. Spring takes an opinionated approach for developing Spring application. This allows it to reducea lot of setup and get quick running application.',
-    'Tag': ['Web-Dev']
+    'title': 'Spring-Boot',
+    'desc': 'Spring Boot is an open source, microservice-based Java web framework. Spring takes an opinionated approach for developing Spring application. This allows it to reducea lot of setup and get quick running application.',
+    'tags': 'Web-Dev, Spring, Framework',
+    'image': '',
+    'link': '/notes/springboot.html',
+    'date': ''
   },
   {
-    'Title': 'Spring Security',
-    'Desc': 'Spring Security is a powerful framework to use with spring, that provides lots out of the box functionality to setup security for spring application and can be extended to fit almost any security requirenment.',
-    'Tag': ['Web-Dev'],
+    'title': 'Spring Security',
+    'desc': 'Spring Security is a powerful framework to use with spring, that provides lots out of the box functionality to setup security for spring application and can be extended to fit almost any security requirenment.',
+    'tags': 'Web-Dev, Spring, Framework',
+    'image': '',
+    'link': '/notes/springsecurity.html',
+    'date': ''
   },
   {
-    'Title': 'Salesforce Development',
-    'Desc': 'Salesforce Development involves programming with Apex. Database Triggers, Asynchronous Apex, REST and callouts.',
-    'Tag': ['Salesforce']
+    'title': 'Salesforce Development',
+    'desc': 'Salesforce Development involves programming with Apex. Database Triggers, Asynchronous Apex, REST and callouts.',
+    'tags': 'Salesforce, Language',
+    'image': '',
+    'link': '/notes/salesforcedev.html',
+    'date': ''
   },
   {
-    'Title': 'C++',
-    'Desc': 'C++ is a cross-platform language that can be used to create high-performance applications',
-    'Tag': ['Language']
+    'title': 'C++',
+    'desc': 'C++ is a cross-platform language that can be used to create high-performance applications',
+    'tags': 'Language',
+    'image': '',
+    'link': '/notes/cpp.html',
+    'date': ''
   },
   {
-    'Title': 'Lua',
-    'Desc': 'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
-    'Tag': ['Language']
+    'title': 'Lua',
+    'desc': 'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
+    'tags': 'Language',
+    'image': '',
+    'link': '/notes/lua.html',
+    'date': ''
   },
   {
-    'Title': 'Git',
-    'Desc': 'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
-    'Tag': ['Version-Control']
+    'title': 'Git',
+    'desc': 'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
+    'tags': 'Version-Control',
+    'image': '',
+    'link': '/notes/git.html',
+    'date': ''
   }
 ]
