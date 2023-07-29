@@ -1,5 +1,42 @@
 # Website 3.0
 
+## Setup Webpage
+
+Basic page layout
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/typography.css" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <script defer src="/src/main.js" type="module"></script>
+  </head>
+  <body>
+    <!--Add To all Pages-->
+    <menu-button src="/images/utils/menu.svg" id="menu-button"></menu-button>
+    <side-nav id="side-nav"></side-nav>
+    <search-bar id="search-bar"></search-bar>
+    <search-pop-up id="search-pop-up" open=false searchfor=""></search-pop-up>
+    <!--    -->
+
+    <!--Main Content-->
+    <div id="content-container">
+      <main id="main">
+        <h1> HEADING </h1>
+        <div id="card-container">
+          <!--Cards attached from notes.js-->
+        </div>
+      </main>
+    </div>
+    <!--Main Content End-->
+  </body>
+</html>
+```
+
 ## Components
 
 ### Add all basic components
@@ -29,7 +66,7 @@ customElements.define("topic-card", Card);
   <!-- Basic Template -->
   <body>
     <!--Add To all Pages-->
-    <menu-button src="/images/menu.svg" id="menu-button"></menu-button>
+    <menu-button src="/images/utils/menu.svg" id="menu-button"></menu-button>
     <side-nav id="side-nav"></side-nav>
     <search-bar id="search-bar"></search-bar>
     <search-pop-up id="search-pop-up" open=false searchfor=""></search-pop-up>
@@ -48,7 +85,7 @@ customElements.define("topic-card", Card);
 Could be used directly in HTML
 
 ```html
-<topic-card title="Test" image="/images/interface.svg" ...otherattributes></topic-card>
+<topic-card title="Test" image="/images/utils/interface.svg" ...otherattributes></topic-card>
 ```
 
 Initialize and append from javascript
@@ -60,7 +97,7 @@ customElements.define('topic-card', Card);
 // -- init and append card
 const card = document.createElement('topic-card');
 card.setAttribute('title', 'Test Title');
-card.setAttribute('image', '/images/interface.svg');
+card.setAttribute('image', '/images/utils/interface.svg');
 card.setAttribute('tags', 'salesforce, web-dev');
 card.setAttribute('desc', 'Spring Boot is an open source, microservice-based Java web framework. Spring takes an opinionated approach for developing Spring application. This allows it to reducea lot of setup and get quick running application.');
 card.setAttribute('date', '10 JAN, 2023');

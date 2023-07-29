@@ -161,7 +161,7 @@ export class SideNav extends HTMLElement {
     navTop.append(Aimg, restSpan);
 
     const gitImg = document.createElement("img");
-    gitImg.setAttribute("src", "/images/git.svg");
+    gitImg.setAttribute("src", "/images/lang/git.svg");
     const gitLink = document.createElement("a");
     gitLink.appendChild(gitImg);
     gitLink.setAttribute("href", "https://github.com/Adwai-T");
@@ -393,17 +393,17 @@ export class ShowError extends HTMLElement {
         min-width: 100px;
         max-width: 400px;
         background-color: var(--error);
-        color: var(--white);
+        color: var(--background);
         padding: 3px 10px;
         align-items: center;
         border-radius: 5px;
       }
       button {
         all: unset;
-        color: var(--white);
+        color: var(--background);
       }
       button svg {
-        color: var(--white);
+        color: var(--background);
         width: 25px;
         height: 25px;
       }
@@ -460,10 +460,11 @@ export class Card extends HTMLElement {
         max-width: 95vw;
         height: 200px;
         margin: 15px;
-        border-radius: 5px;
+        border-radius: 8px;
         box-shadow: 2px 2px 15px var(--foreground);
       }
       img {
+        padding: 15px;
         width: 50px;
         height: auto;
         margin: 5px;
@@ -478,15 +479,20 @@ export class Card extends HTMLElement {
         font-size: 12px;
         font-weight: 900;
         margin: auto 0px 5px 0px;
+        color: var(--primary)
       }
       .title {
-        font-size: 30px;
+        font-size: 20px;
+        color: var(--error);
       }
       .description {
         font-size: 15px;
-        text-align: left;
+        text-align: justify;
         line-height: 1.1;
         margin: 10px 0px;
+        padding: 10px;
+        max-height: 80px;
+        overflow-y:hidden;
       }
       .date {
         font-weight: 900;

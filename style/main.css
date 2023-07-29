@@ -4,8 +4,9 @@
   padding: 0px;
 }
 :root {
-  --white: #fff;
-  --background: #ffffff;
+  --background: #fff;
+  --back-background: #f3f3f3;
+
   /* --foreground: #ffffff; */
   --primary: #126AEC;
   --secondary: #e91e63;
@@ -25,10 +26,11 @@ body{
   display: flex;
   height: 100vh;
   /* height: 100dvh; */
-  background-color: var(--background);
+  background-color: var(--back-background);
 }
 h1, h2, h3, h4, h5 {
   text-align: center;
+  background-color: transparent;
 }
 h1, h3 {
   color: var(--primary);
@@ -45,21 +47,23 @@ h2, h4 {
   height: 100vh;
   /* height: 100dvh; */
   overflow-y: auto;
+  background-color: var(--back-background);
 }
 main{
-  background-color: var(--background);
   color: var(--foreground);
   width: 100%;
   overflow-x: hidden;
   text-align: justify;
   padding: 20px;
-  max-width: 1000px;
+  background-color: var(--back-background);
 }
 #card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  background-color: var(--back-background);
 }
 
 side-nav{

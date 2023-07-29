@@ -1,44 +1,10 @@
-export const articles = [
+export const ARTICLES = [
   {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
-  },
-  {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
-  },
-  {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
-  },
-  {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
-  },
-  {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
-  },
-  {
-    'Title': 'Test',
-    'Desc': 'Test Description New Test Decsiption 1, Even bigger Descriptopn 1, for Topic Description, Could even be little bigger',
-    'Tag': ['web-dev', 'salesforce'],
-    'Date': '03-07-2023',
-    'svg': '/images/spring1.svg', 
+    'title': 'Angular',
+    'desc': 'Angular is a popular framework developed by google, used to create single page applications',
+    'tags': 'Web-Dev, Framework',
+    'image': '/images/lang/angular.svg',
+    'link': '/notes/angular.html',
+    'date': ''
   },
 ];
