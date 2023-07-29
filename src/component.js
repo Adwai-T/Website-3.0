@@ -462,6 +462,10 @@ export class Card extends HTMLElement {
         margin: 15px;
         border-radius: 8px;
         box-shadow: 2px 2px 15px var(--foreground);
+        transition: 0.3s
+      }
+      .card:hover {
+        color: var(--secondary);
       }
       img {
         padding: 15px;
@@ -483,10 +487,11 @@ export class Card extends HTMLElement {
       }
       .title {
         font-size: 20px;
+        padding: 10px;
         color: var(--error);
       }
       .description {
-        font-size: 15px;
+        font-size: 14px;
         text-align: justify;
         line-height: 1.1;
         margin: 10px 0px;
