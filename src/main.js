@@ -20,6 +20,7 @@ customElements.define("show-error", ShowError);
 customElements.define("topic-card", Card);
 //  ---
 
+const contentContainer = document.getElementById('content-container');
 const main = document.getElementById("main");
 const menuButton = document.getElementById("menu-button");
 const sideNav = document.getElementById("side-nav");
@@ -56,7 +57,7 @@ menuButton.onclick = () => {
   else toggleSideNav(true);
 };
 
-main.onclick = () => {
+contentContainer.onclick = () => {
   if (window.innerWidth < window.innerHeight) toggleSideNav(false);
 };
 
@@ -89,7 +90,7 @@ export function addError(message, timer) {
   const showError = document.createElement("show-error");
   showError.setAttribute("message", message);
   if(timer) showError.setAttribute("timer", timer);
-  main.appendChild(showError);
+  contentContainer.appendChild(showError);
 }
 
 /**

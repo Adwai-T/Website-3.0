@@ -10,7 +10,7 @@ export const NOTES  = [
     'tags': 'Web-Dev, Framework',
     'image': '/images/lang/angular.svg',
     'link': '/notes/angular.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title' : 'Spring',
@@ -18,7 +18,7 @@ export const NOTES  = [
     'tags': 'Web-Dev, Framework',
     'image': '/images/lang/spring.svg',
     'link': '/notes/spring.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'Spring-Boot',
@@ -26,7 +26,7 @@ export const NOTES  = [
     'tags': 'Web-Dev, Spring, Framework',
     'image': '/images/lang/spring.svg',
     'link': '/notes/springboot.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'Spring Security',
@@ -34,7 +34,7 @@ export const NOTES  = [
     'tags': 'Web-Dev, Spring, Framework',
     'image': '/images/lang/spring.svg',
     'link': '/notes/springsecurity.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'Salesforce Development',
@@ -42,7 +42,7 @@ export const NOTES  = [
     'tags': 'Salesforce, Language',
     'image': '/images/lang/salesforce.svg',
     'link': '/notes/salesforcedev.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'C++',
@@ -50,7 +50,7 @@ export const NOTES  = [
     'tags': 'Language',
     'image': '/images/lang/cpp.svg',
     'link': '/notes/cpp.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'Lua',
@@ -58,7 +58,7 @@ export const NOTES  = [
     'tags': 'Language',
     'image': '/images/lang/lua.svg',
     'link': '/notes/lua.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   },
   {
     'title': 'Git',
@@ -66,6 +66,6 @@ export const NOTES  = [
     'tags': 'Version-Control',
     'image': '/images/lang/git.svg',
     'link': '/notes/git.html',
-    'date': ''
+    'date': '05 Aug, 2023'
   }
 ]
