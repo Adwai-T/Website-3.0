@@ -6,6 +6,7 @@
 :root {
   --background: #fff;
   --back-background: #f3f3f3;
+  --border: #dadce0;
 
   /* --foreground: #ffffff; */
   --primary: #126AEC;
@@ -30,7 +31,6 @@ body{
   display: flex;
   height: 100vh;
   /* height: 100dvh; */
-  background-color: var(--back-background);
 }
 h1, h2, h3, h4, h5 {
   text-align: center;
@@ -51,7 +51,6 @@ h2, h4 {
   height: 100vh;
   /* height: 100dvh; */
   overflow-y: auto;
-  background-color: var(--back-background);
 }
 main{
   color: var(--foreground);
@@ -67,7 +66,6 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: var(--back-background);
 }
 
 side-nav{

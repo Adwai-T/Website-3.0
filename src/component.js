@@ -435,11 +435,10 @@ export class Card extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({mode: 'open'});
-    const a = document.createElement('a');
-    a.setAttribute('class', 'link');
+
     const card = document.createElement('div');
-    a.appendChild(card);
-    shadow.appendChild(a);
+    
+    shadow.appendChild(card);
     card.setAttribute('class', 'card');
 
     // -- header
@@ -465,6 +464,13 @@ export class Card extends HTMLElement {
     const tags = document.createElement('div');
     tags.setAttribute('class', 'tags');
     footer.append(tags);
+    const a = document.createElement('a');
+    a.setAttribute('class', 'link');
+    const arrow = document.createElement('img');
+    arrow.setAttribute('class', 'arrow');
+    arrow.setAttribute('src', '/images/utils/arrow-right.svg');
+    a.appendChild(arrow);
+    footer.append(a);
 
     const style = document.createElement('style');
     const styleString = `
@@ -473,33 +479,36 @@ export class Card extends HTMLElement {
         flex-direction: column;
         background-color: var(--background);
         color: var(--foreground);
-        width: 400px;
-        max-width: 95vw;
-        height: 200px;
+        width: 280px;
+        max-width: 90vw;
+        height: 230px;
         margin: 15px;
-        border-radius: 8px;
-        box-shadow: 2px 2px 15px var(--foreground);
+        border-radius: 4px;
         transition: 0.3s;
         justify-content: space-between;
-        padding: 10px;
+        padding: 20px;
+        border: 1px solid var(--border);
       }
       .card:hover {
-        background-color: var(--back-background);
-        color: var(--secondary)
+        
       }
       .card-header{
         display:flex;
       }
       .card-footer{
-        inline
+        display:flex;
+        justify-content: space-between;
       }
-
       img {
         padding: 5px;
         width: 40px;
         height: auto;
         margin: 5px;
         align-self: flex-start;
+      }
+      .arrow {
+        padding: 0 !important;
+        margin: 2px !important;
       }
       .tags {
         font-size: 12px;
@@ -528,7 +537,6 @@ export class Card extends HTMLElement {
       a {
         text-decoration: none;
       }
-
     `;
     style.innerHTML = styleString;
     card.append(header, description, footer, style);
