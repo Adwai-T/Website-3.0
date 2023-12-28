@@ -9,6 +9,7 @@ import {
   SearchPopUp,
   ShowError,
   Card,
+  fetchAndShowComponentFromFile,
 } from "./component.js";
 
 //  ---  Init custom element from component.js
@@ -105,4 +106,9 @@ export function changeTheme(element, text, background, link) {
   element.style.setProperty("--secondary", link);
   element.style.setProperty("--foreground", text);
   element.style.setProperty("--background", background);
+}
+
+// ------------------> Helper functions <---------------------//
+function fetchComponentHtmlandAddToMain(attachToElement, fetchLink) {
+  fetchAndShowComponentFromFile(attachToElement, fetchLink);
 }

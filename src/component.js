@@ -559,3 +559,28 @@ export class Card extends HTMLElement {
     shadow.querySelector('.link').setAttribute('href', link);
   }
 }
+
+export async function fetchAndShowComponentFromFile(mainElement, componentLink) {
+  try {
+    const response = await fetch(componentLink);
+    const html = await response.text();
+
+    class ProjectComponent extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: "open" });
+        const template = document.createElement('div');
+        template.innerHTML = html;
+        shadow.append(template);
+      }
+    }
+
+    customElements.define("project-component", ProjectComponent);
+    
+    const projectElement = document.createElement('project-component');
+    mainElement.append(projectElement);
+    
+  } catch (e) {
+    console.log(e);
+  }
+}

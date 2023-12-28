@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/typography.css" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <script src="/src/main.js" type="module"></script>
+  </head>
+  <body>
+    <!--Add To all Pages-->
+    <menu-button src="/images/utils/menu.svg" id="menu-button"></menu-button>
+    <side-nav id="side-nav"></side-nav>
+    <search-bar id="search-bar"></search-bar>
+    <search-pop-up id="search-pop-up" open="false" searchfor=""></search-pop-up>
+    <!--    -->
+
+    <!--Main Content-->
+    <div id="content-container">
+      <main id="main"></main>
+    </div>
+    <!--Main Content End-->
+
+    <script language="javascript">
+      const main = document.getElementById("main");
+      const componentLink = "./index.html";
+      async function fetchAndShowComponentFromFile(mainElement, componentLink) {
+        try {
+          const response = await fetch(componentLink);
+          const html = await response.text();
+
+          class ProjectComponent extends HTMLElement {
+            constructor() {
+              super();
+              const shadow = this.attachShadow({ mode: "open" });
+              const template = document.createElement("div");
+              template.innerHTML = html;
+              shadow.append(template);
+            }
+          }
+
+          customElements.define("project-component", ProjectComponent);
+
+          const projectElement = document.createElement("project-component");
+          mainElement.append(projectElement);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      fetchAndShowComponentFromFile(main, componentLink);
+    </script>
+  </body>
+</html>

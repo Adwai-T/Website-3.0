@@ -2,6 +2,9 @@
  * link: string (absolute or /link)
  * image: string link (absolute or /link)
  * date : string any format
+ * tags : String any format - prefered comma separated
+ * desc : String any format
+ * title : string any format
  */
 export const NOTES  = [
   {
@@ -34,7 +37,7 @@ export const NOTES  = [
     'tags': 'Web-Dev, Spring, Framework',
     'image': '/images/lang/spring.svg',
     'link': '/notes/springsecurity.html',
-    'date': '05 Aug, 2023'
+    'date': ''
   },
   {
     'title': 'Salesforce Development',
