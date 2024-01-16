@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MD TO HTML</title>
+    <link rel="stylesheet" href="index.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Online markdown to HTML converter / transpiler from link or text, also generates index from headers, convert and download. | adwait.in | Project"
+    />
+
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
-    <script src="/src/main.js" type="module"></script>
+    <script defer src="/src/main.js" type="module"></script>
   </head>
   <body>
     <!--Add To all Pages-->
@@ -18,37 +23,35 @@
 
     <!--Main Content-->
     <div id="content-container">
-      <main id="main"></main>
+      <main id="main">
+        <h2>Markdown to Html Transpiler</h2>
+        <div id="container">
+          <textarea id="text-input" class="display-area"></textarea>
+          <div id="controls">
+            <button id="from-text" class="button button-red">From Text</button>
+            <button id="from-link" class="button button-red">From Link</button>
+            <button id="show-html" class="button button-blue">Show Html</button>
+            <button id="show-page" class="button button-blue">Show page</button>
+            <button
+              id="download-page"
+              class="button button-blue"
+              download="index.html"
+            >
+              Download HTML
+            </button>
+          </div>
+          <iframe
+            id="result-page"
+            class="display-area"
+            style="display: none"
+          ></iframe>
+          <textarea id="result-html" class="display-area" type="text"></textarea>
+        </div>
+        <script src="index.js" type="module"></script>
+        <!-- <script src="src/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> -->
+      </main>
     </div>
     <!--Main Content End-->
-
-    <script language="javascript">
-      const main = document.getElementById("main");
-      const componentLink = "./index.html";
-      async function fetchAndShowComponentFromFile(mainElement, componentLink) {
-        try {
-          const response = await fetch(componentLink);
-          const html = await response.text();
-
-          class ProjectComponent extends HTMLElement {
-            constructor() {
-              super();
-              const shadow = this.attachShadow({ mode: "open" });
-              const template = document.createElement("div");
-              template.innerHTML = html;
-              shadow.append(template);
-            }
-          }
-
-          customElements.define("project-component", ProjectComponent);
-
-          const projectElement = document.createElement("project-component");
-          mainElement.append(projectElement);
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      fetchAndShowComponentFromFile(main, componentLink);
-    </script>
   </body>
 </html>

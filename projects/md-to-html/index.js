@@ -1,4 +1,4 @@
-const regexFileLink = "/src/regex.json";
+const regexFileLink = "regex.json";
 // const stack = new Stack();
 
 let fetchURL;
@@ -101,7 +101,6 @@ function processInlineElements() {
 function processStartOfLineElements() {
   let line = removeAndGetline();
   let lineType = lineStartWith[line[0]];
-  // console.log(lineType, line);
   let processedLine = "";
 
   switch (lineType) {

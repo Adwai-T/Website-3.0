@@ -9,7 +9,6 @@ import {
   SearchPopUp,
   ShowError,
   Card,
-  fetchAndShowComponentFromFile,
 } from "./component.js";
 
 //  ---  Init custom element from component.js
@@ -32,25 +31,18 @@ const sideNavWidth = "100";
 let isSideNavOpen = false;
 
 function onInit() {
-  if (window.innerWidth < window.innerHeight) {
-    menuButton.style.visibility = "visible";
-    toggleSideNav(false);
-  } else {
-    menuButton.style.visibility = "hidden";
-    toggleSideNav(true);
-  }
+  declareFunctionFromModuleToUseInGlobalScope();
+  checkWindowSizeAndUpdateMenu();
 }
 onInit();
 
+function declareFunctionFromModuleToUseInGlobalScope() {
+  window.addError = addError;
+}
+
 /** Events Start */
 window.onresize = () => {
-  if (window.innerWidth < window.innerHeight) {
-    menuButton.style.visibility = "visible";
-    toggleSideNav(false);
-  } else {
-    menuButton.style.visibility = "hidden";
-    toggleSideNav(true);
-  }
+  checkWindowSizeAndUpdateMenu();
 };
 
 menuButton.onclick = () => {
@@ -69,6 +61,17 @@ searchBar.addEventListener("globalsearch", (e) => {
   e.stopPropagation();
 });
 /** Events End */
+
+
+function checkWindowSizeAndUpdateMenu() {
+  if (window.innerWidth < window.innerHeight) {
+    menuButton.style.visibility = "visible";
+    toggleSideNav(false);
+  } else {
+    menuButton.style.visibility = "hidden";
+    toggleSideNav(true);
+  }
+}
 
 function toggleSideNav(open) {
   if (window.innerWidth > window.innerHeight && open === false) return; // always open for non mobile devices
@@ -106,9 +109,4 @@ export function changeTheme(element, text, background, link) {
   element.style.setProperty("--secondary", link);
   element.style.setProperty("--foreground", text);
   element.style.setProperty("--background", background);
-}
-
-// ------------------> Helper functions <---------------------//
-function fetchComponentHtmlandAddToMain(attachToElement, fetchLink) {
-  fetchAndShowComponentFromFile(attachToElement, fetchLink);
 }

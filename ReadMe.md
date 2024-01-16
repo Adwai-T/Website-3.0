@@ -10,6 +10,7 @@ Basic page layout
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Good Long Description" />
     <title>Document</title>
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
