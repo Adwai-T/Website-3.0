@@ -550,6 +550,7 @@ export class Card extends HTMLElement {
     const date = this.getAttribute('date');
     const tags = this.getAttribute('tags') ? this.getAttribute('tags') : '';
     const link = this.getAttribute('link') ? this.getAttribute('link') : '/404.html';
+    const target = this.getAttribute('target') ? this.getAttribute('target') : false;
 
     shadow.querySelector('.title').innerText = title;
     shadow.querySelector('.description').innerText = desc;
@@ -557,6 +558,9 @@ export class Card extends HTMLElement {
     shadow.querySelector('.date').innerText = date;
     shadow.querySelector('.card-avatar').setAttribute('src', image);
     shadow.querySelector('.link').setAttribute('href', link);
+    if(target) {
+      shadow.querySelector('.link').setAttribute('target', target);
+    }
   }
 }
 
