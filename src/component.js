@@ -482,11 +482,11 @@ export class Card extends HTMLElement {
         width: 280px;
         max-width: 90vw;
         height: 230px;
-        margin: 15px;
+        margin: 2px;
         border-radius: 4px;
         transition: 0.3s;
         justify-content: space-between;
-        padding: 20px;
+        padding: 7px;
         border: 1px solid var(--border);
       }
       .card:hover {
@@ -503,7 +503,6 @@ export class Card extends HTMLElement {
         padding: 5px;
         width: 40px;
         height: auto;
-        margin: 5px;
         align-self: flex-start;
       }
       .arrow {
@@ -519,7 +518,7 @@ export class Card extends HTMLElement {
       .title {
         font-size: 20px;
         padding: 10px;
-        color: var(--error);
+        color: var(--primary);
       }
       .description {
         font-size: 14px;
@@ -529,6 +528,7 @@ export class Card extends HTMLElement {
         padding: 10px;
         max-height: 80px;
         overflow-y:hidden;
+        color: var(--secondary);
       }
       .date {
         font-weight: 900;

@@ -5,8 +5,27 @@
  * tags : String any format - prefered comma separated
  * desc : String any format
  * title : string any format
+ * target: string, a tag attribute
  */
 export const NOTES  = [
+  {
+    'title': 'Salesforce Development',
+    'desc': 'Salesforce development with Apex, Asynchronous Apex, REST Web servicecs, SOQL, SOSL, DML',
+    'tags': 'Salesforce, Development',
+    'image': '/images/lang/salesforce.svg',
+    'link': 'https://bitbucket.org/adwai-t/salesforce/src/master/SalesForceDeveloper.md',
+    'date': '',
+    'target': '_blank'
+  },
+  {
+    'title': 'Lightning Web Components',
+    'desc': 'Basics of creating Lightning Web Components for Salesforce Platform',
+    'tags': 'Salesforce, Development',
+    'image': '/images/lang/salesforce.svg',
+    'link': 'https://bitbucket.org/adwai-t/salesforce/src/master/SalesforceLWC.md',
+    'date': '',
+    'target': '_blank'
+  },
   {
     'title': 'Angular',
     'desc': 'Angular is a popular framework developed by google, used to create single page applications',
@@ -71,7 +90,7 @@ export const NOTES  = [
   },
   {
     'title': 'Git',
-    'desc': 'Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications.',
+    'desc': 'Git is a version control system that tracks changes in any set of computer files.',
     'tags': 'Version-Control',
     'image': '/images/lang/git.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Utilities/Git.md',

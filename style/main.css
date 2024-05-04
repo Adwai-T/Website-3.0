@@ -4,13 +4,13 @@
   padding: 0px;
 }
 :root {
-  --background: #fff;
-  --back-background: #f3f3f3;
-  --border: #dadce0;
+  --background: #FFF2D7;
+  --back-background: #FFE0B5;
+  --border: #322C2B;
 
   /* --foreground: #ffffff; */
-  --primary: #126AEC;
-  --secondary: #e91e63;
+  --primary: #803D3B;
+  --secondary: #AF8260;
 
   --foreground:#333333;
   /* --background:#333333; */
