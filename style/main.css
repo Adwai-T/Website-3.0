@@ -1,11 +1,7 @@
-* {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-}
+
 :root {
   --background: #FFF2D7;
-  --back-background: #FFE0B5;
+  --back-background: #fff6ea; 
   --border: #322C2B;
 
   /* --foreground: #ffffff; */
@@ -19,7 +15,13 @@
 
   /* use url(var(--data)) */
   --background-anim-square: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC");
-  
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--back-background);
 }
 
 html {
@@ -54,6 +56,7 @@ h2, h4 {
 }
 main{
   color: var(--foreground);
+  background-color: var(--error);
   width: 100%;
   overflow-x: hidden;
   text-align: justify;
