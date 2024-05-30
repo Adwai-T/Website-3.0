@@ -1,4 +1,4 @@
-import { PROJECTS } from "../data/projects.js";
+import { PROJECTS } from "/data/projects.js";
 
 function init() {
   const container = document.getElementById('card-container');

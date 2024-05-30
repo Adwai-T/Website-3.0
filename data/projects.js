@@ -6,4 +6,11 @@ export const PROJECTS = [
     'image': '/images/lang/markdown.svg',
     'link': '/projects/md-to-html/convert.html',
   },
+  {
+    'title': 'Computer Vision',
+    'desc': 'Computer Vision and OpenCV examples',
+    'tags': 'computer vision, opencv, image transformation',
+    'image': '/images/lang/opencv.png',
+    'link': '/projects/computer-vision/image-transform.html',
+  }
 ];

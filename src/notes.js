@@ -1,4 +1,4 @@
-import { NOTES } from "../data/notes.js";
+import { NOTES } from "/data/notes.js";
 
 
 function init() {

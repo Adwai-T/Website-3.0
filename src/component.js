@@ -479,9 +479,7 @@ export class Card extends HTMLElement {
         flex-direction: column;
         background-color: var(--background);
         color: var(--foreground);
-        width: 280px;
         max-width: 90vw;
-        height: 230px;
         margin: 2px;
         border-radius: 4px;
         transition: 0.3s;
@@ -544,6 +542,8 @@ export class Card extends HTMLElement {
 
   connectedCallback() {
     const shadow = this.shadowRoot;
+    const height = this.getAttribute('height');
+    const width = this.getAttribute('width');
     const title = this.getAttribute('title');
     const desc = this.getAttribute('desc');
     const image = this.getAttribute('image');
@@ -552,15 +552,24 @@ export class Card extends HTMLElement {
     const link = this.getAttribute('link') ? this.getAttribute('link') : '/404.html';
     const target = this.getAttribute('target') ? this.getAttribute('target') : false;
 
+    if(width) shadow.querySelector('.card').style.width = width;
+    else shadow.querySelector('.card').style.width = '255px';
+    if(height) shadow.querySelector('.card').style.height = height;
+    else shadow.querySelector('.card').style.height = '200px';
+    
     shadow.querySelector('.title').innerText = title;
-    shadow.querySelector('.description').innerText = desc;
-    shadow.querySelector('.tags').innerText = tags;
-    shadow.querySelector('.date').innerText = date;
-    shadow.querySelector('.card-avatar').setAttribute('src', image);
+    if(desc)
+      shadow.querySelector('.description').innerText = desc;
+    if(tags)
+      shadow.querySelector('.tags').innerText = tags;
+    if(date)
+      shadow.querySelector('.date').innerText = date;
+    if(image)
+      shadow.querySelector('.card-avatar').setAttribute('src', image);
+    else shadow.querySelector('.card-avatar').remove();
     shadow.querySelector('.link').setAttribute('href', link);
-    if(target) {
+    if(target)
       shadow.querySelector('.link').setAttribute('target', target);
-    }
   }
 }
 

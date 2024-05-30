@@ -1,5 +1,9 @@
 # Website 3.0
 
+## Included libraries
+
+1. [OpenCV](https://docs.opencv.org/4.5.0/opencv.js)
+
 ## Setup Webpage
 
 Basic page layout
