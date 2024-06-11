@@ -1,16 +1,15 @@
 :root {
-  --background: #FFF2D7;
-  --back-background: #fff6ea; 
-  --border: #322C2B;
+  --background: #FFF2D7; /*#0B0C10*/
+  --back-background: white;  /*#1F2833*/
+  --border: #322C2B; /*#45A29E*/
 
-  /* --foreground: #ffffff; */
-  --primary: #803D3B;
-  --secondary: #AF8260;
+  --primary: #803D3B; /*#66FCF1*/
+  --secondary: #AF8260; /*#C5C6C7*/
 
-  --foreground:#333333;
+  --foreground:#333333; /*#66FCF1*/
   /* --background:#333333; */
-  --error: #D70000;
-  --success: #004D40;
+  --error: #D70000; /**/
+  --success: #004D40; /**/
 
   /* use url(var(--data)) */
   --background-anim-square: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC");
@@ -21,6 +20,7 @@
   margin: 0px;
   padding: 0px;
   background-color: var(--back-background);
+  color: var(--foreground);
 }
 
 html {
@@ -62,9 +62,6 @@ main{
   text-align: justify;
   padding: 20px;
   background-color: transparent;
-}
-main {
-  
 }
 #card-container {
   display: flex;
@@ -113,4 +110,14 @@ menu-button{
   0% {
     background-position: 50px 50px;
   }
+}
+
+/* Generic classes */
+.flexwrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.flexnowrap{
+  display: flex;
+  flex-wrap: nowrap;
 }

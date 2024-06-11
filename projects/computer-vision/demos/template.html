@@ -23,14 +23,32 @@
 
     <!--Main Content-->
     <div id="content-container">
-      <main id="main">
-      </main>
+      <header>
+        <a href="../image-transform.html"
+          ><span style="font-weight: 600">BACK</span></a
+        >
+      </header>
+      <main id="main"></main>
       <footer>
-        <a href="../image-transform.html">BACK</a>
+        <a href="../image-transform.html"
+          ><span style="font-weight: 600">BACK</span></a
+        >
       </footer>
     </div>
     <!--Main Content End-->
     <script type="module">
+      import { getImage, showImage } from "/src/helper.js";
+
+      const main = document.getElementById("main");
+
+      cv["onRuntimeInitialized"] = function () {
+        onCVloadCallback();
+      };
+
+      async function onCVloadCallback() {
+        let owl = await getImage("/images/stock/owl.jpg");
+        showImage(main, owl);
+      }
       
     </script>
   </body>

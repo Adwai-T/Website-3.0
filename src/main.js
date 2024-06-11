@@ -19,7 +19,7 @@ customElements.define("search-pop-up", SearchPopUp);
 customElements.define("show-error", ShowError);
 customElements.define("topic-card", Card);
 //  ---
-
+const root = document.documentElement;
 const contentContainer = document.getElementById('content-container');
 const main = document.getElementById("main");
 const menuButton = document.getElementById("menu-button");
@@ -99,14 +99,24 @@ export function addError(message, timer) {
 
 /**
  * Change theme of provided element
- * @param {HTMLElement} element Element to change theme for
- * @param {string} text
- * @param {string} background
- * @param {string} link
  */
-export function changeTheme(element, text, background, link) {
-  element.style.setProperty("--primary", link);
-  element.style.setProperty("--secondary", link);
-  element.style.setProperty("--foreground", text);
-  element.style.setProperty("--background", background);
+function changeTheme(element, primary, secondary, text, 
+  background, backBackground, border) {
+  element.style.setProperty("--primary", primary); // -- button text, icons,card text title
+  element.style.setProperty("--secondary", secondary); // -- card description text
+  element.style.setProperty("--foreground", text); // -- All other text
+  element.style.setProperty("--background", background); // -- buttons on hover, sidebar, cards
+  element.style.setProperty("--back-background", backBackground); // --background of buttons
+  element.style.setProperty("--border", border); // -- Border color for cards and buttons
+}
+
+function toLightMode (element) {
+  changeTheme(element, '#AC3B61', '#123C69', '#123C69', '#EEE2DC', '#BAB2VB5', '#EDC787');
+}
+function toDarkMode (element) {
+  changeTheme(element, '#0065a9', '#0098ff', '#1f3864', '#e6e6e6', '#aaaaaa', '#5ab3d5');
+}
+// -- For debug
+function toDebugMode (element) {
+  changeTheme(element, 'green', 'blue', 'red', 'pink', 'brown', 'black');
 }
