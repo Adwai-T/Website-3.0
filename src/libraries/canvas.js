@@ -1,4 +1,8 @@
 /**
+ * @author Adwait Sonawane
+ */
+
+/**
  * Main canvas class, helps create canvas context and draw on it.
  * @param {number} width - Width
  * @param {number} height - Height

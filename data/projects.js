@@ -12,5 +12,12 @@ export const PROJECTS = [
     'tags': 'computer vision, opencv, image transformation',
     'image': '/images/lang/opencv.png',
     'link': '/projects/computer-vision/image-transform.html',
+  },
+  {
+    'title': '2D Lightning',
+    'desc': '2D Lightning Demo',
+    'tags': '2d games, 2d lighting',
+    'image': '/images/lang/opencv.png',
+    'link': '/projects/lighting-2d/lightning.html',
   }
 ];
