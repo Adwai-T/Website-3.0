@@ -155,10 +155,11 @@ export class SideNav extends HTMLElement {
     nav.append(navTop, navCenter, navBottom);
 
     const logLink = document.createElement('a');
-    logLink.setAttribute('href','/');
+    logLink.setAttribute('href','/about.html');
     const Aimg = document.createElement("img");
     Aimg.setAttribute("src", "/navicon.ico");
-    const restSpan = document.createElement("h5");
+    const restSpan = document.createElement("a");
+    restSpan.setAttribute('href','/about.html');
     restSpan.innerText = "dwait";
     logLink.append(Aimg);
     navTop.append(logLink, restSpan);
@@ -362,7 +363,7 @@ export class SearchPopUp extends HTMLElement {
     });
     const res1 = document.createElement('div');
     res1.setAttribute('class', 'search-result');
-    res1.innerText = searchfor;
+    res1.innerText = 'Could Not connect to server.';
     this.shadowRoot.childNodes[0].appendChild(res1);
   }
 }
