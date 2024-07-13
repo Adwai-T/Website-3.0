@@ -1,17 +1,14 @@
 /**
- * @author Adwait Sonawane
- */
-
-/**
  * Main canvas class, helps create canvas context and draw on it.
  * @param {number} width - Width
  * @param {number} height - Height
  * @param {string} elementId - Id of element in Dom to which canvas element create is to be appended.
  * @param {string} id - id to be set of the created element.
+ * @param {boolean} willBeReadFrequently - If the image data from canvas will be read frequently
  * @class
  */
 export class Canvas {
-  constructor(width, height, elementId, id) {
+  constructor(width, height, elementId, id, willBeReadFrequently) {
     Canvas.numberOfCanvas++;
     this.width = width;
     this.height = height;
@@ -21,7 +18,6 @@ export class Canvas {
     this.canvas.width = width;
     this.canvas.height = height;
     this.canvas.tabIndex = 1;
-    this.canvas.style = "border:1px solid #000000; cursor: none";
     document.getElementById(elementId).appendChild(this.canvas);
 
     if (typeof id === "string") {
@@ -29,7 +25,11 @@ export class Canvas {
       this.id = id;
     }
 
-    this.ctx = this.canvas.getContext("2d");
+    // -- willReadFrequently is used when data is read and written to canvas frequently
+    if(willBeReadFrequently)
+      this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
+    else
+      this.ctx = this.canvas.getContext("2d");
   }
 
   /**
@@ -120,6 +120,14 @@ export class Vector2i {
    */
   toPoint() {
     return new Point(this.x, this.y);
+  }
+
+  draw(ctx, color, thickness) {
+    new Line(new Point(0,0), this.toPoint()).draw(ctx, color, thickness);
+  }
+
+  drawFromVector(vector, ctx, color, thickness) {
+    new Line(new Point(vector.x, vector.y), this.toPoint()).draw(ctx, color, thickness);
   }
 
   /**
@@ -337,6 +345,49 @@ export class Vector2i {
 
   getNewVector() {
     return new Vector2i(this.x, this.y);
+  }
+
+  /**
+   * Rotate this vector by an angle around the vector
+   * @param {Angle} angle 
+   * @param {Vector2i} aroundVector 
+   */
+  rotateVector(angle, aroundVector) {
+    let rotatedVector = this.getRotatedVector(angle, aroundVector);
+    this.x = rotatedVector.x;
+    this.y = rotatedVector.y;
+  }
+
+  /**
+   * Rotate vector by an angle around the vector and get new vector
+   * @param {Angle} angle 
+   * @param {Vector2i} aroundVector 
+   */
+  getRotatedVector(angle, aroundVector) {
+    let rotationMatrix = [
+      Math.cos(angle.getRadian()), -Math.sin(angle.getRadian()),
+      Math.sin(angle.getRadian()), Math.cos(angle.getRadian())
+    ];
+
+    let translatedMatrix = new Vector2i(0, 0);
+    if(aroundVector) {
+      translatedMatrix = [
+        this.x - aroundVector.x, 
+        this.y - aroundVector.y
+      ];
+    }
+
+    let multiplicationMatrix = [
+      rotationMatrix[0] * translatedMatrix[0] + rotationMatrix[1] * translatedMatrix[1],
+      rotationMatrix[2] * translatedMatrix[0] + rotationMatrix[3] * translatedMatrix[1]
+    ]
+
+    let translateMatrixBack = [
+      multiplicationMatrix[0] + translatedMatrix[0],
+      multiplicationMatrix[1] + translatedMatrix[1]
+    ];
+
+    return new Vector2i(translateMatrixBack[0], translateMatrixBack[1]);
   }
 }
 
@@ -1264,8 +1315,8 @@ export class Bullets {
 /**
  * Load image and return promoise
  * @param {string} imageLocation Image Location
- * @param {string} width Image width. eg. 200px
- * @param {string} height Image height. eg. 200px
+ * @param {number} width Image width. eg. 200px
+ * @param {number} height Image height. eg. 200px
  * @returns promise of image being loaded asychronously
  */
 export function loadImage(imageLocation, width, height) {
@@ -1301,6 +1352,62 @@ export function loadFile(src) {
       else return reject('Could not load file');
     };
   });
+}
+
+/**
+ * Convert to GrayScale Image
+ */
+export function convertToGrayScaleImage(imageData) {
+  const data = imageData.data;
+  // Convert image to grayscale using luminosity method
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Calculate grayscale value
+    const grayscale = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+    // Set RGB channels to grayscale value
+    data[i] = grayscale;     // Red
+    data[i + 1] = grayscale; // Green
+    data[i + 2] = grayscale; // Blue
+  }
+
+  return imageData;
+}
+
+export function convertToSingleColorImage(imageData, color, keepIntensityLevels) {
+    const data = imageData.data;
+  // Convert image to grayscale using luminosity method
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+
+    // Set RGB channels to grayscale value
+    if(color == 'red') {
+      
+      if(keepIntensityLevels) data[i] = data[i];//Red -- do nothing
+      else data[i] = (r+g+b) / 3; // Red
+      data[i + 1] = 0; // Green
+      data[i + 2] = 0; // Blue
+    }
+    else if(color == 'green') {
+      data[i] = 0; // Red
+      if(keepIntensityLevels) data[i+1] = data[i+1];//Green -- do nothing
+      else data[i + 1] = (r+g+b) / 3; // Green
+      data[i + 2] = 0; // Blue
+    }
+    else if(color == 'blue') {
+      data[i] = 0; // Red
+      data[i + 1] = 0; // Green
+      if(keepIntensityLevels) data[i+2] = data[i+2];//Red -- do nothing
+      else data[i + 2] = (r+g+b) / 3; // Blue
+    }
+  }
+  
+  return imageData;
 }
 
 /**
