@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
     <!---->
-    <link rel="stylesheet" href="../image-transform.css" />
-    <script src="/src/libraries/opencv.js"></script>
+    <link rel="stylesheet" href="./image-transform.css" />
+    <script src="../../src/libraries/opencv.js"></script>
+    <!-- <script src="../../src/libraries/helper.js" type="module"></script> -->
   </head>
   <body>
     <!--Add To all Pages-->
@@ -22,25 +23,27 @@
 
     <!--Main Content-->
     <div id="content-container">
-      <header>
-        <a href="../image-transform.html"><span style="font-weight: 600;">BACK</span></a>
-      </header>
-      <main id="main"></main>
-      <footer>
-        <a href="../image-transform.html"><span style="font-weight: 600;">BACK</span></a>
-      </footer>
+      <main id="main">
+        <div id="card-container"></div>
+      </main>
     </div>
     <!--Main Content End-->
-    <script type="module">
-      import { getImage, showImage, MatManagement } from "/src/helper.js";
-
-      cv["onRuntimeInitialized"] = function () {
-        onCVloadCallback();
-      };
-
-      async function onCVloadCallback() {
-      }
-      
-    </script>
   </body>
+
+  <script type="module">
+    import { CV_PROJECTS } from "/data/computer-vision.js";
+
+    function init() {
+      const container = document.getElementById("card-container");
+      CV_PROJECTS.forEach((project) => {
+        let ele = document.createElement("topic-card");
+        Object.keys(project).forEach((key) => {
+          ele.setAttribute(key, project[key]);
+        });
+        container.appendChild(ele);
+      });
+    }
+
+    init();
+  </script>
 </html>

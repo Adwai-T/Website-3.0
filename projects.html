@@ -14,13 +14,13 @@
     <menu-button src="/images/utils/menu.svg" id="menu-button"></menu-button>
     <side-nav id="side-nav"></side-nav>
     <search-bar id="search-bar"></search-bar>
-    <search-pop-up id="search-pop-up" open=false searchfor=""></search-pop-up>
+    <search-pop-up id="search-pop-up" open="false" searchfor=""></search-pop-up>
     <!--    -->
 
     <!--Main Content-->
     <div id="content-container">
       <main id="main">
-        <h1> PROJECTS </h1>
+        <h1>PROJECTS</h1>
         <div id="card-container">
           <!--Cards attached from notes.js-->
         </div>
@@ -28,4 +28,20 @@
     </div>
     <!--Main Content End-->
   </body>
+  <script type="module">
+    import { PROJECTS } from "/data/projects.js";
+
+    function init() {
+      const container = document.getElementById("card-container");
+      PROJECTS.forEach((project) => {
+        let ele = document.createElement("topic-card");
+        Object.keys(project).forEach((key) => {
+          ele.setAttribute(key, project[key]);
+        });
+        container.appendChild(ele);
+      });
+    }
+
+    init();
+  </script>
 </html>

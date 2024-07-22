@@ -1355,62 +1355,6 @@ export function loadFile(src) {
 }
 
 /**
- * Convert to GrayScale Image
- */
-export function convertToGrayScaleImage(imageData) {
-  const data = imageData.data;
-  // Convert image to grayscale using luminosity method
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    
-    // Calculate grayscale value
-    const grayscale = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-
-    // Set RGB channels to grayscale value
-    data[i] = grayscale;     // Red
-    data[i + 1] = grayscale; // Green
-    data[i + 2] = grayscale; // Blue
-  }
-
-  return imageData;
-}
-
-export function convertToSingleColorImage(imageData, color, keepIntensityLevels) {
-    const data = imageData.data;
-  // Convert image to grayscale using luminosity method
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-
-    // Set RGB channels to grayscale value
-    if(color == 'red') {
-      
-      if(keepIntensityLevels) data[i] = data[i];//Red -- do nothing
-      else data[i] = (r+g+b) / 3; // Red
-      data[i + 1] = 0; // Green
-      data[i + 2] = 0; // Blue
-    }
-    else if(color == 'green') {
-      data[i] = 0; // Red
-      if(keepIntensityLevels) data[i+1] = data[i+1];//Green -- do nothing
-      else data[i + 1] = (r+g+b) / 3; // Green
-      data[i + 2] = 0; // Blue
-    }
-    else if(color == 'blue') {
-      data[i] = 0; // Red
-      data[i + 1] = 0; // Green
-      if(keepIntensityLevels) data[i+2] = data[i+2];//Red -- do nothing
-      else data[i + 2] = (r+g+b) / 3; // Blue
-    }
-  }
-  
-  return imageData;
-}
-
-/**
  * Draw Image at position
  * @param {Context} context Canvas Context 2D
  * @param {Image} image Loaded Image reference

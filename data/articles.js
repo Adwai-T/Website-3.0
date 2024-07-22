@@ -1,10 +1,9 @@
 export const ARTICLES = [
-  // {
-  //   'title': 'Angular',
-  //   'desc': 'Angular is a popular framework developed by google, used to create single page applications',
-  //   'tags': 'Web-Dev, Framework',
-  //   'image': '/images/lang/angular.svg',
-  //   'link': '/notes/angular.html',
-  //   'date': ''
-  // },
+  {
+    'title': 'Computer Vision',
+    'desc': 'Computer Vision and OpenCV examples',
+    'tags': 'computer vision, opencv, image transformation',
+    'image': '/images/lang/opencv.png',
+    'link': '/projects/computer-vision/computer-vision.html',
+  },
 ];
