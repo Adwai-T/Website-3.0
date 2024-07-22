@@ -556,7 +556,7 @@ export class Card extends HTMLElement {
         margin: 2px !important;
       }
       .tags {
-        font-size: 9px;
+        font-size: 12px;
         font-weight: 400;
         margin: auto 0px 5px 0px;
         color: var(--primary)
