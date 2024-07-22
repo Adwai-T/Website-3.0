@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Computer Vision</title>
+    <!--Common Imports for website-->
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
-    <script defer src="/src/articles.js" type="module"></script>
   </head>
   <body>
     <!--Add To all Pages-->
@@ -19,22 +19,22 @@
 
     <!--Main Content-->
     <div id="content-container" class="animate-background-boxes-slow">
+      <h2>Salesforce</h2>
+      <header></header>
       <main id="main">
-        <h1>ARTICLES</h1>
-        <div id="card-container">
-          <!--Cards attached from notes.js-->
-        </div>
+        <div id="card-container"></div>
+        <div class="bottom-toolbar"><back-button url="/articles.html"></back-button></div>
       </main>
-      <div class="bottom-toolbar"><back-button url="/"></back-button></div>
     </div>
     <!--Main Content End-->
   </body>
+
   <script type="module">
-    import { ARTICLES } from "../data/articles.js";
+    import { SALESFORCE_ARTICLES } from "/data/salesforce.js";
 
     function init() {
       const container = document.getElementById("card-container");
-      ARTICLES.forEach((article) => {
+      SALESFORCE_ARTICLES.forEach((article) => {
         let ele = document.createElement("topic-card");
         Object.keys(article).forEach((key) => {
           ele.setAttribute(key, article[key]);
@@ -45,4 +45,9 @@
 
     init();
   </script>
+  <style>
+    h2 {
+      margin: 10px 0px 0px 0px;
+    }
+  </style>
 </html>

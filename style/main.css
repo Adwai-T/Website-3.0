@@ -69,6 +69,14 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: transparent;
+}
+
+.bottom-toolbar {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
 }
 
 side-nav{
@@ -83,6 +91,16 @@ menu-button{
   top: 0px;
   z-index: 10;
   visibility: hidden;
+}
+
+a {
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--error);
+}
+a:hover {
+  color: var(--success);
+  cursor: pointer;
 }
 
 .animate-background-boxes {

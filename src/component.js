@@ -363,8 +363,54 @@ export class SearchPopUp extends HTMLElement {
     });
     const res1 = document.createElement('div');
     res1.setAttribute('class', 'search-result');
-    res1.innerText = 'Could Not connect to server.';
+    res1.innerText = 'Could not connect to the Server.';
     this.shadowRoot.childNodes[0].appendChild(res1);
+  }
+}
+
+/**
+ * Back Button
+ */
+export class BackButton extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    const container = document.createElement('div');
+    shadow.appendChild(container);
+    const a = document.createElement('a');
+    a.setAttribute('href', 'index.html');
+    const span = document.createElement('span');
+    span.innerText = 'Back';
+    const backIcon = document.createElement('img');
+    backIcon.setAttribute('src', '/images/utils/chevronleft.svg');
+    a.appendChild(backIcon);
+    a.appendChild(span);
+    container.appendChild(a);
+    const styleString = `
+      *{
+        background : transparent;
+        background-color : transparent;
+      }
+      a{
+        text-decoration: none;
+        color: var(--primary);
+        display:flex;
+        justify-items: center;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    `;
+    const style = document.createElement('style');
+    style.innerHTML=styleString;
+    container.appendChild(style);
+  }
+
+  connectedCallback() {
+    let url = this.getAttribute('url');
+    let aTag = this.shadowRoot.querySelector('a');
+    if(url) aTag.setAttribute('href', url);
   }
 }
 
@@ -437,9 +483,12 @@ export class Card extends HTMLElement {
 
     const shadow = this.attachShadow({mode: 'open'});
 
+    const a = document.createElement('a');
+    a.setAttribute('class', 'link');
     const card = document.createElement('div');
-    
-    shadow.appendChild(card);
+
+    shadow.appendChild(a);
+    a.appendChild(card);
     card.setAttribute('class', 'card');
 
     // -- header
@@ -456,7 +505,7 @@ export class Card extends HTMLElement {
     header.append(image, titleContainer);
 
     // -- body
-    const description = document.createElement('p');
+    const description = document.createElement('div');
     description.setAttribute('class', 'description');
 
     // -- footer
@@ -465,26 +514,24 @@ export class Card extends HTMLElement {
     const tags = document.createElement('div');
     tags.setAttribute('class', 'tags');
     footer.append(tags);
-    const a = document.createElement('a');
-    a.setAttribute('class', 'link');
-    const arrow = document.createElement('img');
-    arrow.setAttribute('class', 'arrow');
-    arrow.setAttribute('src', '/images/utils/arrow-right.svg');
-    a.appendChild(arrow);
-    footer.append(a);
+    // const arrow = document.createElement('img');
+    // arrow.setAttribute('class', 'arrow');
+    // arrow.setAttribute('src', '/images/utils/chevronright.svg');
+    // a.appendChild(arrow);
+    // footer.append(a);
 
     const style = document.createElement('style');
     const styleString = `
       .card {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         background-color: var(--background);
         color: var(--foreground);
         max-width: 90vw;
         margin: 2px;
         border-radius: 4px;
         transition: 0.3s;
-        justify-content: space-between;
         padding: 7px;
         border: 1px solid var(--border);
       }
@@ -500,7 +547,7 @@ export class Card extends HTMLElement {
       }
       img {
         padding: 5px;
-        width: 40px;
+        width: 30px;
         height: auto;
         align-self: flex-start;
       }
@@ -509,8 +556,8 @@ export class Card extends HTMLElement {
         margin: 2px !important;
       }
       .tags {
-        font-size: 12px;
-        font-weight: 900;
+        font-size: 9px;
+        font-weight: 400;
         margin: auto 0px 5px 0px;
         color: var(--primary)
       }
@@ -521,10 +568,10 @@ export class Card extends HTMLElement {
       }
       .description {
         font-size: 14px;
-        text-align: justify;
+        text-align: left;
+        text-wrap: pretty;
         line-height: 1.1;
-        margin: 10px 0px;
-        padding: 10px;
+        padding: 0px 10px;
         max-height: 80px;
         overflow-y:hidden;
         color: var(--secondary);

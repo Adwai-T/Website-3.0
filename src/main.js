@@ -9,6 +9,7 @@ import {
   SearchPopUp,
   ShowError,
   Card,
+  BackButton,
 } from "./component.js";
 
 //  ---  Init custom element from component.js
@@ -18,6 +19,7 @@ customElements.define("search-bar", GlobalSearch);
 customElements.define("search-pop-up", SearchPopUp);
 customElements.define("show-error", ShowError);
 customElements.define("topic-card", Card);
+customElements.define("back-button", BackButton)
 //  ---
 const root = document.documentElement;
 const contentContainer = document.getElementById('content-container');
@@ -66,6 +68,7 @@ searchBar.addEventListener("globalsearch", (e) => {
 function checkWindowSizeAndUpdateMenu() {
   if (window.innerWidth < window.innerHeight) {
     menuButton.style.visibility = "visible";
+    menuButton.style.background = "transparent";
     toggleSideNav(false);
   } else {
     menuButton.style.visibility = "hidden";

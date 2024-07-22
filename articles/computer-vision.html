@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
-    <!---->
-    <link rel="stylesheet" href="./image-transform.css" />
-    <script src="../../src/libraries/opencv.js"></script>
-    <!-- <script src="../../src/libraries/helper.js" type="module"></script> -->
   </head>
   <body>
     <!--Add To all Pages-->
@@ -23,11 +19,28 @@
 
     <!--Main Content-->
     <div id="content-container">
+      <h2>Computer Vision</h2>
       <main id="main">
         <div id="card-container"></div>
       </main>
     </div>
     <!--Main Content End-->
-    <script src="./computer-vision-projects.js" type="module"></script>
   </body>
+
+  <script type="module">
+    import { CV_ARTICLES } from "/data/computer-vision.js";
+
+    function init() {
+      const container = document.getElementById("card-container");
+      CV_ARTICLES.forEach((articles) => {
+        let ele = document.createElement("topic-card");
+        Object.keys(articles).forEach((key) => {
+          ele.setAttribute(key, articles[key]);
+        });
+        container.appendChild(ele);
+      });
+    }
+
+    init();
+  </script>
 </html>
