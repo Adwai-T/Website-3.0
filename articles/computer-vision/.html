@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
+    <!---->
+    <link rel="stylesheet" href="../image-transform.css" />
+    <script src="/src/libraries/opencv.js"></script>
+    <script src="/src/libraries/helper.js" type="module"></script>
   </head>
   <body>
     <!--Add To all Pages-->
@@ -20,22 +24,32 @@
     <!--Main Content-->
     <div id="content-container">
       <header>
-
+        <a href="../image-transform.html"
+          ><span style="font-weight: 600">BACK</span></a
+        >
       </header>
-      <main id="main">
-        <div id="card-container"></div>
-      </main>
+      <main id="main"></main>
       <footer>
-        <div class="bottom-toolbar"><back-button url="/articles.html"></back-button></div>
+        <a href="../image-transform.html"
+          ><span style="font-weight: 600">BACK</span></a
+        >
       </footer>
     </div>
     <!--Main Content End-->
+    <script type="module">
+      import { getImage, showImage } from "/src/helper.js";
+
+      const main = document.getElementById("main");
+
+      cv["onRuntimeInitialized"] = function () {
+        onCVloadCallback();
+      };
+
+      async function onCVloadCallback() {
+        let owl = await getImage("/images/stock/owl.jpg");
+        showImage(main, owl);
+      }
+      
+    </script>
   </body>
-  <!--Script and Styles for this Page-->
-  <style>
-
-  </style>
-  <script type="module">
-
-  </script>
 </html>

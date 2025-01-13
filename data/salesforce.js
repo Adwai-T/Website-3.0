@@ -5,7 +5,7 @@ const size = {
 
 export const SALESFORCE_ARTICLES = [
   {
-    'title': 'SOQL Basic to Advance',
+    'title': 'SOQL Comprehensive Guide',
     'desc': 'Understanding SOQL query with example and using them in Apex.',
     'link': '/articles/salesforce/soql.html',
     'width' : size.width,
