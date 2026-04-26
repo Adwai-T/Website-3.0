@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
+    <title>Salesforce SOQL Queries</title>
+    <!--Common Imports for website-->
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
-    <script defer src="/src/projects.js" type="module"></script>
   </head>
   <body>
     <!--Add To all Pages-->
@@ -18,30 +18,24 @@
     <!--    -->
 
     <!--Main Content-->
-    <div id="content-container" class="animate-background-boxes-slow">
+    <div id="content-container">
+      <header>
+        <h2>Cross Validation in ML</h2>
+      </header>
       <main id="main">
-        <h1>PROJECTS</h1>
-        <div id="card-container">
-          <!--Cards attached from notes.js-->
-        </div>
+        
       </main>
+      <footer>
+        <div class="bottom-toolbar"><back-button url="/articles/salesforce.html"></back-button></div>
+      </footer>
     </div>
     <!--Main Content End-->
   </body>
+  <!--Script and Styles for this Page-->
+  <style>
+
+  </style>
   <script type="module">
-    import { PROJECTS } from "/data/projects.js";
 
-    function init() {
-      const container = document.getElementById("card-container");
-      PROJECTS.forEach((project) => {
-        let ele = document.createElement("topic-card");
-        Object.keys(project).forEach((key) => {
-          ele.setAttribute(key, project[key]);
-        });
-        container.appendChild(ele);
-      });
-    }
-
-    init();
   </script>
 </html>

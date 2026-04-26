@@ -7,6 +7,12 @@
  * title : string any format
  * target: string, a tag attribute
  */
+
+const size = {
+  width: '400px',
+  height: '200px'
+}
+
 export const NOTES  = [
   {
     'title': 'Salesforce Development',
@@ -15,7 +21,9 @@ export const NOTES  = [
     'image': '/images/lang/salesforce.svg',
     'link': 'https://bitbucket.org/adwai-t/salesforce/src/master/SalesForceDeveloper.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Lightning Web Components',
@@ -24,7 +32,9 @@ export const NOTES  = [
     'image': '/images/lang/salesforce.svg',
     'link': 'https://bitbucket.org/adwai-t/salesforce/src/master/SalesforceLWC.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Angular',
@@ -33,7 +43,9 @@ export const NOTES  = [
     'image': '/images/lang/angular.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/WebDevelopment/AngularCourseNotes.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title' : 'Spring',
@@ -42,7 +54,9 @@ export const NOTES  = [
     'image': '/images/lang/spring.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Java/Spring.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Spring-Boot',
@@ -51,7 +65,9 @@ export const NOTES  = [
     'image': '/images/lang/spring.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Java/SpringBoot.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Spring Security',
@@ -60,7 +76,9 @@ export const NOTES  = [
     'image': '/images/lang/spring.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Java/SpringSecurity.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   // {
   //   'title': 'Salesforce Development',
@@ -77,7 +95,9 @@ export const NOTES  = [
     'image': '/images/lang/cpp.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/C%2B%2B/C%2B%2B.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Lua',
@@ -86,7 +106,9 @@ export const NOTES  = [
     'image': '/images/lang/lua.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Lua/Lua.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title': 'Git',
@@ -95,7 +117,9 @@ export const NOTES  = [
     'image': '/images/lang/git.svg',
     'link': 'https://github.com/Adwai-T/Notes/blob/master/Utilities/Git.md',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   },
   {
     'title' : 'All Notes',
@@ -104,6 +128,8 @@ export const NOTES  = [
     'image': '/images/lang/git.svg',
     'link': 'https://github.com/Adwai-T/Notes/tree/master',
     'date': '',
-    'target': '_blank'
+    'target': '_blank',
+    'width' : size.width,
+    'height': size.height
   }
 ]

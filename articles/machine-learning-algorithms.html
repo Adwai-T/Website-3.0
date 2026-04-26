@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
+    <title>Machine Learning Articles</title>
+    <!--Common Imports for website-->
     <link rel="stylesheet" href="/style/typography.css" />
     <link rel="stylesheet" href="/style/main.css" />
     <script defer src="/src/main.js" type="module"></script>
-    <script defer src="/src/projects.js" type="module"></script>
   </head>
   <body>
     <!--Add To all Pages-->
@@ -19,24 +19,25 @@
 
     <!--Main Content-->
     <div id="content-container" class="animate-background-boxes-slow">
+      <h2>Machine Learning</h2>
+      <header></header>
       <main id="main">
-        <h1>PROJECTS</h1>
-        <div id="card-container">
-          <!--Cards attached from notes.js-->
-        </div>
+        <div id="card-container"></div>
+        <div class="bottom-toolbar"><back-button url="/articles.html"></back-button></div>
       </main>
     </div>
     <!--Main Content End-->
   </body>
+
   <script type="module">
-    import { PROJECTS } from "/data/projects.js";
+    import { MACHINE_LEARNING_ALORITHMS_ARTICLES } from "/data/machine-learning-algorithms.js";
 
     function init() {
       const container = document.getElementById("card-container");
-      PROJECTS.forEach((project) => {
+      MACHINE_LEARNING_ALORITHMS_ARTICLES.forEach((article) => {
         let ele = document.createElement("topic-card");
-        Object.keys(project).forEach((key) => {
-          ele.setAttribute(key, project[key]);
+        Object.keys(article).forEach((key) => {
+          ele.setAttribute(key, article[key]);
         });
         container.appendChild(ele);
       });
@@ -44,4 +45,9 @@
 
     init();
   </script>
+  <style>
+    h2 {
+      margin: 10px 0px 0px 0px;
+    }
+  </style>
 </html>

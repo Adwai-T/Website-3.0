@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link rel="stylesheet" href="/style/typography.css" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <script defer src="/src/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <!--Add To all Pages-->
+    <menu-button src="/images/utils/menu.svg" id="menu-button"></menu-button>
+    <side-nav id="side-nav"></side-nav>
+    <search-bar id="search-bar"></search-bar>
+    <search-pop-up id="search-pop-up" open="false" searchfor=""></search-pop-up>
+    <!--    -->
+
+    <div id="content-container" class="animate-background-boxes-slow">
+      <main id="main">
+        <canvas id="lightCanvas"></canvas>
+      </main>
+    </div>
+    <script>
+      const canvas = document.getElementById("lightCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Set canvas size
+      canvas.width = 800;
+      canvas.height = 600;
+
+      // Player properties
+      let player = {
+        x: 400,
+        y: 300,
+        width: 50,
+        height: 50,
+        color: "blue",
+      };
+
+      // Obstacles properties
+      const obstacles = [
+        { x: 100, y: 200, width: 150, height: 50 },
+        { x: 300, y: 400, width: 50, height: 200 },
+        { x: 600, y: 100, width: 150, height: 50 },
+      ];
+
+      // Light source properties
+      let light = {
+        x: player.x,
+        y: player.y,
+        radius: 200,
+        color: "yellow",
+      };
+
+      function drawPlayer() {
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+      }
+
+      function drawObstacles() {
+        obstacles.forEach((obstacle) => {
+          ctx.fillStyle = "gray";
+          ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        });
+      }
+
+      function drawLight() {
+        ctx.save();
+        ctx.globalCompositeOperation = "destination-out";
+
+        // Clear light area
+        ctx.beginPath();
+        ctx.arc(light.x, light.y, light.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+
+        // Draw light source
+        ctx.fillStyle = light.color;
+        ctx.beginPath();
+        ctx.arc(light.x, light.y, 10, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function updateLightPosition() {
+        light.x = player.x + player.width / 2;
+        light.y = player.y + player.height / 2;
+      }
+
+      function drawScene() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawPlayer();
+        drawObstacles();
+        drawLight();
+
+        requestAnimationFrame(drawScene);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            player.y -= 5;
+            break;
+          case "ArrowDown":
+            player.y += 5;
+            break;
+          case "ArrowLeft":
+            player.x -= 5;
+            break;
+          case "ArrowRight":
+            player.x += 5;
+            break;
+        }
+        updateLightPosition();
+      });
+
+      drawScene();
+    </script>
+  </body>
+</html>

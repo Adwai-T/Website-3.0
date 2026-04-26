@@ -1,15 +1,24 @@
 const size = {
-  width: '300px',
+  width: '450px',
   height: '150px'
 }
 
 export const ARTICLES = [
+  // {
+  //   'title': 'Salesforce',
+  //   'desc': 'Salesforce Configurations and Customizations with available tools like Triggers, Apex Classes, Flows, Integrations and LWC',
+  //   'tags': 'Development, Admininstator, LWC, Integrations, Apex, Triggers, flows',
+  //   'image': '/images/lang/salesforce.svg',
+  //   'link': '/articles/salesforce.html',
+  //   'width' : size.width,
+  //   'height': size.height
+  // },
   {
-    'title': 'Salesforce',
-    'desc': 'Salesforce Configurations and Customizations with available tools like Triggers, Apex Classes, Flows, Integrations and LWC',
-    'tags': 'Development, Admininstator, LWC, Integrations, Apex, Triggers, flows',
+    'title': 'Machine Learning Algorithms',
+    'desc': '',
+    'tags': 'ML, AI',
     'image': '/images/lang/salesforce.svg',
-    'link': '/articles/salesforce.html',
+    'link': '/articles/machine-learning-algorithms.html',
     'width' : size.width,
     'height': size.height
   },
